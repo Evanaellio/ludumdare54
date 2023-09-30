@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1q8fat8svu3g"]
+
+[ext_resource type="PackedScene" uid="uid://btmbhhii75uyt" path="res://scenes/game_objects/item/item.tscn" id="1_m1dn0"]
+
+[node name="Sword" type="Node2D"]
+
+[node name="Item" parent="." instance=ExtResource("1_m1dn0")]
+position = Vector2(32, 32)
+
+[node name="TileMap" parent="Item" index="0"]
+layer_0/tile_data = PackedInt32Array(-2, 0, 65536, -1, 0, 65536, -65537, 0, 65536, 65535, 0, 65536, -65536, 0, 65536, -65535, 0, 65536, 1, 0, 65536, 2, 0, 65536)
+
+[editable path="Item"]
