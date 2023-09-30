@@ -22,3 +22,7 @@ func start():
 
 func _process(delta):
 	pass
+
+
+func _on_queue_item_picked_up(item_node: Node2D):
+	$backpack.add_child(item_node.duplicate())
