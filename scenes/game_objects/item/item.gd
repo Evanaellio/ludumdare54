@@ -1,7 +1,7 @@
 extends Node2D
 
 ## /../backpack/OccupiedTilemap
-@onready var occupied_tilemap : TileMap = $"../../OccupiedTileMap"
+@onready var occupied_tilemap : TileMap = $"/root/Gameplay/Backpack/OccupiedTileMap"
 var tile_nodes : Array[Node2D] = []
 
 var tiles_occupied_by_me : Array[Vector2i] = []

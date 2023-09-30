@@ -4,10 +4,10 @@ extends Node2D
 	set(value):
 		item_pack = value
 		if item_ptr != null:
-			remove_child(item_ptr)
+			$Item.remove_child(item_ptr)
 		if value != null:
 			item_ptr = value.instantiate()
-			add_child(item_ptr)
+			$Item.add_child(item_ptr)
 	get:
 		return item_pack
 
