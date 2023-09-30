@@ -19,9 +19,9 @@ func pre_start(params):
 func start():
 	print("gameplay.gd: start() called")
 
-	$queue.add_to_queue("bow")
-	$queue.add_to_queue("hatchet")
-	$queue.add_to_queue("potion")
+	$Queue.add_random_to_queue()
+	$Queue.add_random_to_queue()
+	$Queue.add_random_to_queue()
 
 
 func _process(delta):
@@ -29,4 +29,4 @@ func _process(delta):
 
 
 func _on_queue_item_picked_up(item_node: Node2D):
-	$backpack.add_child(item_node.duplicate())
+	$Backpack.add_child(item_node.duplicate())

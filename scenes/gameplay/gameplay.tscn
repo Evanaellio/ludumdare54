@@ -12,13 +12,13 @@ script = ExtResource("5")
 [node name="PauseLayer" parent="." instance=ExtResource("2")]
 visible = false
 
-[node name="backpack" parent="." instance=ExtResource("4_eahcj")]
+[node name="Backpack" parent="." instance=ExtResource("4_eahcj")]
 position = Vector2(181, 17)
 
-[node name="queue" parent="." instance=ExtResource("5_ja52p")]
+[node name="Queue" parent="." instance=ExtResource("5_ja52p")]
 position = Vector2(838, 169)
 
-[node name="fightzone" parent="." instance=ExtResource("6_vhdhj")]
+[node name="Fightzone" parent="." instance=ExtResource("6_vhdhj")]
 position = Vector2(201, 506)
 
-[connection signal="item_picked_up" from="queue" to="." method="_on_queue_item_picked_up"]
+[connection signal="item_picked_up" from="Queue" to="." method="_on_queue_item_picked_up"]

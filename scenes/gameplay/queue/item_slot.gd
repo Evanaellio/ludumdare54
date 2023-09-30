@@ -29,7 +29,7 @@ func _on_area_2d_mouse_exited():
 	$Sprite.modulate = "#ffffff"
 	highlight = false
 
-func _on_area_2d_input_event(viewport, event, shape_idx):
+func _on_area_2d_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton && event.pressed:
 		highlight = true
 	if event is InputEventMouseButton && !event.pressed && highlight:

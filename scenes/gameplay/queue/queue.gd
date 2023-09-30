@@ -2,6 +2,12 @@ extends Node2D
 
 signal item_picked_up
 
+var ItemsPacks = {
+	"bow":     preload("res://scenes/game_objects/item_instances/bow.tscn"),
+	"hatchet": preload("res://scenes/game_objects/item_instances/hatchet.tscn"),
+	"potion":  preload("res://scenes/game_objects/item_instances/potion.tscn"),
+}
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -17,8 +23,12 @@ func _on_item_picked_up(item_node: Node2D):
 
 func add_to_queue(item_name: String):
 	var slot = _first_free()
-	var pack = load("res://scenes/game_objects/item_instances/" + item_name + ".tscn")
+	var pack = ItemsPacks.get(item_name, null)
 	slot.item = pack
+
+func add_random_to_queue():
+	var n = ItemsPacks.keys()[randi() % ItemsPacks.keys().size()]
+	add_to_queue(n)
 
 func has_space() -> bool:
 	return _first_free() != null
