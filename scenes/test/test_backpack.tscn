@@ -13,12 +13,12 @@
 layer_0/tile_data = PackedInt32Array(0, 0, 0, 131073, 0, 0, 196609, 0, 0, 196610, 0, 0, 131074, 0, 0, 327684, 0, 0, 393221, 0, 0, 327686, 0, 0, 131080, 0, 0, 131081, 0, 0, 196617, 0, 0, 196618, 0, 0)
 
 [node name="Bow" parent="." instance=ExtResource("2_sq3by")]
-position = Vector2(834, 460)
+position = Vector2(707, 379)
 
 [node name="Hatchet" parent="." instance=ExtResource("3_4e4pf")]
-position = Vector2(934, 164)
+position = Vector2(-25, 276)
 
 [node name="potion" parent="." instance=ExtResource("4_x3p1i")]
-position = Vector2(119, 539)
+position = Vector2(226, 290)
 
 [editable path="backpack"]

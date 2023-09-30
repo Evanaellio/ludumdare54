@@ -10,6 +10,7 @@ size = Vector2(64, 64)
 script = ExtResource("1_drqr3")
 
 [node name="TilePlaceholder" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 texture = ExtResource("1_fyur5")
 
 [node name="Area2D" type="Area2D" parent="."]
