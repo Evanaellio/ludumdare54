@@ -1,14 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://4fyoq8npekf0"]
+[gd_scene load_steps=7 format=3 uid="uid://4fyoq8npekf0"]
 
 [ext_resource type="Texture2D" uid="uid://dtwpm3uclaspj" path="res://assets/sprites/icon.png" id="1"]
 [ext_resource type="PackedScene" uid="uid://barl4q1kugrmm" path="res://scenes/gameplay/pause-layer/pause-layer.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://hceejbt3bshl" path="res://scenes/gameplay/backpack.tscn" id="4_eahcj"]
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="5"]
+[ext_resource type="PackedScene" uid="uid://i0y8p7u3goat" path="res://scenes/gameplay/queue.tscn" id="5_ja52p"]
+[ext_resource type="PackedScene" uid="uid://bhaya5sk8xnk" path="res://scenes/gameplay/fightzone.tscn" id="6_vhdhj"]
 
 [node name="Gameplay" type="Node"]
 script = ExtResource("5")
+
+[node name="PauseLayer" parent="." instance=ExtResource("2")]
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(523.993, 298.508)
 texture = ExtResource("1")
 
-[node name="PauseLayer" parent="." instance=ExtResource("2")]
+[node name="backpack" parent="." instance=ExtResource("4_eahcj")]
+position = Vector2(14, 13)
+
+[node name="queue" parent="." instance=ExtResource("5_ja52p")]
+position = Vector2(671, 165)
+
+[node name="fightzone" parent="." instance=ExtResource("6_vhdhj")]
+position = Vector2(34, 502)

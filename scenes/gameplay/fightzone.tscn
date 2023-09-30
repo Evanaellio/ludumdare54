@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bhaya5sk8xnk"]
+
+[node name="fightzone" type="Node2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(223, 152)
+polygon = PackedVector2Array(-223, -148, 385, -156, 389, -24, -226, -19)

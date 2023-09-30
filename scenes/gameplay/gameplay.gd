@@ -13,6 +13,7 @@ func pre_start(params):
 			var val = params[key]
 			printt("", key, val)
 	$Sprite2D.position = Game.size / 2
+	$PauseLayer.visible = true
 
 
 # `start()` is called after pre_start and after the graphic transition ends.
