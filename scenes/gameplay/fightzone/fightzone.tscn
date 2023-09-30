@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhaya5sk8xnk"]
+[gd_scene load_steps=5 format=3 uid="uid://bhaya5sk8xnk"]
 
 [ext_resource type="FontFile" uid="uid://cawekr44fruhm" path="res://assets/fonts/open-sans/open-sans-regular.ttf" id="1_4w4tg"]
 [ext_resource type="Script" path="res://scenes/gameplay/fightzone/fightzone.gd" id="1_edjpk"]
+[ext_resource type="PackedScene" uid="uid://krooeswl2kml" path="res://scenes/gameplay/fightzone/terrain/TestBiome.tscn" id="3_lq371"]
 
 [sub_resource type="FontFile" id="FontFile_1tkbn"]
 fallbacks = Array[Font]([ExtResource("1_4w4tg")])
@@ -15,16 +16,24 @@ cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 [node name="Fightzone" type="Node2D"]
 script = ExtResource("1_edjpk")
 
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+disable_3d = true
+handle_input_locally = false
+gui_disable_input = true
+size = Vector2i(650, 512)
+render_target_update_mode = 4
+
+[node name="TestBiome" parent="SubViewportContainer/SubViewport" instance=ExtResource("3_lq371")]
+
 [node name="LootTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="BoostTimer" type="Timer" parent="."]
 one_shot = true
-
-[node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2(223, 152)
-color = Color(0.317647, 0.423529, 0.666667, 1)
-polygon = PackedVector2Array(-223, -148, 389, -150, 387, -18, -221, -18)
 
 [node name="GUI" type="Control" parent="."]
 layout_mode = 3
@@ -76,6 +85,7 @@ max_value = 1.0
 show_percentage = false
 
 [node name="Label" type="Label" parent="GUI/LootProgressBar"]
+layout_mode = 0
 offset_left = 11.0
 offset_top = 1.0
 offset_right = 85.0

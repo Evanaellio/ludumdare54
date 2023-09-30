@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://krooeswl2kml"]
+
+[node name="TestBiome" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="ParallaxBackground"]
+color = Color(0.301961, 0.67451, 1, 1)
+polygon = PackedVector2Array(0, 0, 832, 0, 832, 88, 0, 88)
+
+[node name="Polygon2D2" type="Polygon2D" parent="ParallaxBackground"]
+position = Vector2(0, 88)
+color = Color(0.564706, 0.494118, 0.301961, 1)
+polygon = PackedVector2Array(0, 0, 832, 0, 832, 40, 0, 40)
+
+[node name="Layer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(580, 0)
+
+[node name="Polygon2D4" type="Polygon2D" parent="ParallaxBackground/Layer2"]
+position = Vector2(40, 0)
+color = Color(0.627451, 0.65098, 0.584314, 1)
+polygon = PackedVector2Array(64, 88, 104, 40, 168, 88)
+
+[node name="Polygon2D5" type="Polygon2D" parent="ParallaxBackground/Layer2"]
+position = Vector2(480, 0)
+color = Color(0.662745, 0.690196, 0.619608, 1)
+polygon = PackedVector2Array(64, 88, 120, 24, 168, 88)
+
+[node name="Polygon2D6" type="Polygon2D" parent="ParallaxBackground/Layer2"]
+position = Vector2(352, 0)
+color = Color(0.792157, 0.823529, 0.741176, 1)
+polygon = PackedVector2Array(64, 88, 88, 48, 136, 88)
+
+[node name="Polygon2D7" type="Polygon2D" parent="ParallaxBackground/Layer2"]
+position = Vector2(192, 0)
+color = Color(0.788235, 0.819608, 0.737255, 1)
+polygon = PackedVector2Array(64, 88, 104, 8, 192, 88)
+
+[node name="Layer1" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(2, 2)
+motion_mirroring = Vector2(550, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="ParallaxBackground/Layer1"]
+color = Color(0.313726, 0.780392, 0.396078, 1)
+polygon = PackedVector2Array(64, 88, 104, 16, 136, 88)
+
+[node name="Polygon2D4" type="Polygon2D" parent="ParallaxBackground/Layer1"]
+position = Vector2(416, 0)
+color = Color(0.313726, 0.780392, 0.396078, 1)
+polygon = PackedVector2Array(64, 88, 88, 32, 136, 88)
+
+[node name="Polygon2D2" type="Polygon2D" parent="ParallaxBackground/Layer1"]
+position = Vector2(256, 0)
+color = Color(0.313726, 0.780392, 0.396078, 1)
+polygon = PackedVector2Array(64, 88, 104, 40, 136, 88)
+
+[node name="Polygon2D3" type="Polygon2D" parent="ParallaxBackground/Layer1"]
+position = Vector2(128, 0)
+color = Color(0.313726, 0.780392, 0.396078, 1)
+polygon = PackedVector2Array(64, 88, 112, 48, 168, 88)

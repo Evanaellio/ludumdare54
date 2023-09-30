@@ -19,6 +19,6 @@ position = Vector2(181, 17)
 position = Vector2(838, 169)
 
 [node name="Fightzone" parent="." instance=ExtResource("6_vhdhj")]
-position = Vector2(201, 506)
+position = Vector2(182, 506)
 
 [connection signal="item_picked_up" from="Queue" to="." method="_on_queue_item_picked_up"]

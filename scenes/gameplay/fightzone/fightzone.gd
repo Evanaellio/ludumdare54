@@ -9,6 +9,8 @@ extends Node2D
 @onready var fight_timer: Timer = $FightTimer
 @onready var next_fight_timer: Timer = $NextFightTimer
 
+@onready var background = $SubViewportContainer/SubViewport/TestBiome
+
 signal found_loot
 
 enum States {WALK, FIGHT}
@@ -24,9 +26,12 @@ func _ready():
 	boost()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(delta):
 	boost_remaining.value = boost_timer.time_left / boost_timer.wait_time
 	loot_progress.value = 1 - loot_timer.time_left / loot_timer.wait_time
+	
+	if state == States.WALK:
+		background.get_node("ParallaxBackground").scroll_offset += Vector2(-delta * 8, 0)
 	
 # Start timer to next loot, timer can be paused during fights
 func next_loot():
