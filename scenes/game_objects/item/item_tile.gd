@@ -10,10 +10,11 @@ func _ready():
 	item.tile_ready(self)
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton && event.pressed:
-		clicking = true
-	if event is InputEventMouseButton && !event.pressed && clicking:
-		item.on_click()
+	if event is InputEventMouseButton && event.button_index == 1:
+		if event.pressed :
+			clicking = true
+		if !event.pressed && clicking:
+			item.on_click()
 
 func _on_area_2d_mouse_exited():
 	clicking = false

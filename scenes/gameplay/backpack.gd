@@ -4,10 +4,11 @@ extends Node2D
 var clicking = false
 
 func _on_area_2d_input_event(_viewport, event, _shape_idx):
-	if event is InputEventMouseButton && event.pressed:
-		clicking = true
-	if event is InputEventMouseButton && !event.pressed && clicking:
-		get_node("/root/SelectionManager").dropItem(self)
+	if event is InputEventMouseButton && event.button_index == 1:
+		if event.pressed:
+			clicking = true
+		if !event.pressed && clicking:
+			get_node("/root/SelectionManager").dropItem(self)
 
 func placeItem(item: Node2D):
 	var item_tile = item.tile_nodes[0]

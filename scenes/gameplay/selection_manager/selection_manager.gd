@@ -12,10 +12,19 @@ func _process(delta):
 		displayPreview()
 
 func _input(event: InputEvent):
+	if frameProcessed:
+		return
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_A:
 			if not selectedItem == null:
 				selectedItem.rotate(PI / 2)
+				frameProcessed = true
+	if event is InputEventMouseButton && event.button_index == 4:
+		selectedItem.rotate(PI / 2)
+		frameProcessed = true
+	if event is InputEventMouseButton && event.button_index == 5:
+		selectedItem.rotate(-PI / 2)
+		frameProcessed = true
 
 func selectItem(item: Node2D):
 	if (not frameProcessed) and selectedItem == null:
