@@ -2,12 +2,16 @@ extends Node2D
 
 @export var item: PackedScene:
 	set(value):
+		item_pack = value
 		if item_ptr != null:
 			remove_child(item_ptr)
 		if value != null:
 			item_ptr = value.instantiate()
 			add_child(item_ptr)
+	get:
+		return item_pack
 
+var item_pack = null
 var item_ptr: Node2D = null
 var highlight: bool = false
 

@@ -12,5 +12,26 @@ func _process(delta):
 	pass
 
 
-func _on_item_picked_up(item_node):
+func _on_item_picked_up(item_node: Node2D):
 	item_picked_up.emit(item_node)
+
+func add_to_queue(item_name: String):
+	var slot = _first_free()
+	var pack = load("res://scenes/game_objects/item_instances/" + item_name + ".tscn")
+	slot.item = pack
+
+func has_space() -> bool:
+	return _first_free() != null
+
+func _first_free() -> Node2D:
+	if $Items/slot1.item == null:
+		return $Items/slot1
+	if $Items/slot2.item == null:
+		return $Items/slot2
+	if $Items/slot3.item == null:
+		return $Items/slot3
+	if $Items/slot4.item == null:
+		return $Items/slot4
+	if $Items/slot5.item == null:
+		return $Items/slot5
+	return null

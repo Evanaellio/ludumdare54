@@ -19,6 +19,10 @@ func pre_start(params):
 func start():
 	print("gameplay.gd: start() called")
 
+	$queue.add_to_queue("bow")
+	$queue.add_to_queue("hatchet")
+	$queue.add_to_queue("potion")
+
 
 func _process(delta):
 	pass
