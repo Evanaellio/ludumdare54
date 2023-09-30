@@ -32,6 +32,7 @@ func selectItem(item: Node2D):
 		frameProcessed = true
 		selectedItem = item
 		snapItemToCursor()
+		item.clear_previously_occupied_by_me()
 
 func dropItem(target):
 	if (not frameProcessed) and not selectedItem == null:

@@ -32,13 +32,14 @@ func check_occupied() -> bool:
 		if status == OCCUPIED:
 			return true
 	return false
-		
+	
+func clear_previously_occupied_by_me():
+	for mine in tiles_occupied_by_me:
+		occupied_tilemap.set_cell(0, mine, 0, EMPTY)
+		tiles_occupied_by_me = []
+
 func place_in_backpack() -> bool:
 	if not check_occupied():
-		for mine in tiles_occupied_by_me:
-			occupied_tilemap.set_cell(0, mine, 0, EMPTY)
-			tiles_occupied_by_me = []
-		
 		for tile_node in tile_nodes:
 			var map_coords = get_map_coords_for_tile_node(tile_node)
 			occupied_tilemap.set_cell(0, map_coords, 0, OCCUPIED)
