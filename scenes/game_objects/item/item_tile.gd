@@ -6,9 +6,7 @@ extends Node2D
 
 var clicking : bool = false
 
-
 func _ready():
-	print("bah ouais mais c'est appellé ça")
 	item.tile_ready(self)
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
