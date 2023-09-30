@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://btmbhhii75uyt"]
+[gd_scene load_steps=3 format=3 uid="uid://btmbhhii75uyt"]
 
+[ext_resource type="Script" path="res://scenes/game_objects/item/item.gd" id="1_et31y"]
 [ext_resource type="TileSet" uid="uid://mj14mpuy32d0" path="res://scenes/game_objects/item/tileset.tres" id="1_rkysu"]
 
 [node name="Item" type="Node2D"]
+script = ExtResource("1_et31y")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_rkysu")
