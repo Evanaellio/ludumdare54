@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3o5ldssvldyj"]
+
+[ext_resource type="PackedScene" uid="uid://4eycyuaq04ei" path="res://scenes/gameplay/backpack.tscn" id="1_637xv"]
+[ext_resource type="PackedScene" uid="uid://dojv5nbouq7c7" path="res://scenes/game_objects/item_instances/bow.tscn" id="2_sq3by"]
+[ext_resource type="PackedScene" uid="uid://cpwdtctwt53e" path="res://scenes/game_objects/item_instances/hatchet.tscn" id="3_4e4pf"]
+[ext_resource type="PackedScene" uid="uid://xmj2aadl6sgg" path="res://scenes/game_objects/item_instances/potion.tscn" id="4_x3p1i"]
+
+[node name="test_backpack" type="Node2D"]
+
+[node name="backpack" parent="." instance=ExtResource("1_637xv")]
+
+[node name="OccupiedTileMap" parent="backpack" index="1"]
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 131073, 0, 0, 196609, 0, 0, 196610, 0, 0, 131074, 0, 0, 327684, 0, 0, 393221, 0, 0, 327686, 0, 0, 131080, 0, 0, 131081, 0, 0, 196617, 0, 0, 196618, 0, 0)
+
+[node name="Bow" parent="." instance=ExtResource("2_sq3by")]
+position = Vector2(834, 460)
+
+[node name="Hatchet" parent="." instance=ExtResource("3_4e4pf")]
+position = Vector2(934, 164)
+
+[node name="potion" parent="." instance=ExtResource("4_x3p1i")]
+position = Vector2(119, 539)
+
+[editable path="backpack"]

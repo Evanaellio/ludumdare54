@@ -1,7 +1,14 @@
-[gd_scene format=3 uid="uid://hceejbt3bshl"]
+[gd_scene load_steps=2 format=3 uid="uid://4eycyuaq04ei"]
+
+[ext_resource type="TileSet" uid="uid://4to7cmq0wyv6" path="res://scenes/gameplay/occupied_tile_set.tres" id="1_wp8js"]
 
 [node name="backpack" type="Node2D"]
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 position = Vector2(223, 152)
+color = Color(0.0588235, 0.341176, 0.32549, 1)
 polygon = PackedVector2Array(-223, -148, 385, -156, 402, 320, -215, 308)
+
+[node name="OccupiedTileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_wp8js")
+format = 2
