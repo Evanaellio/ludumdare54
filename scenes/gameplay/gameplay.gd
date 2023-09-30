@@ -12,7 +12,6 @@ func pre_start(params):
 		for key in params:
 			var val = params[key]
 			printt("", key, val)
-	$Sprite2D.position = Game.size / 2
 	$PauseLayer.visible = true
 
 
@@ -20,8 +19,14 @@ func pre_start(params):
 func start():
 	print("gameplay.gd: start() called")
 
+	$queue.add_to_queue("bow")
+	$queue.add_to_queue("hatchet")
+	$queue.add_to_queue("potion")
+
 
 func _process(delta):
-	elapsed += delta
-	$Sprite2D.position.x = Game.size.x / 2 + 150 * sin(2 * 0.4 * PI * elapsed)
-	$Sprite2D.position.y = Game.size.y / 2 + 100 * sin(2 * 0.2 * PI * elapsed)
+	pass
+
+
+func _on_queue_item_picked_up(item_node: Node2D):
+	$backpack.add_child(item_node.duplicate())

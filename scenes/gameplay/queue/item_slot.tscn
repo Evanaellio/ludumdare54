@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6d4ofdrwafyb"]
+
+[ext_resource type="Script" path="res://scenes/gameplay/queue/item_slot.gd" id="1_318cl"]
+[ext_resource type="Texture2D" uid="uid://5rnsjyutmuk6" path="res://scenes/game_objects/item/tile_placeholder.png" id="2_bigqo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6mjij"]
+size = Vector2(53.5, 54.75)
+
+[node name="ItemSlot" type="Node2D"]
+script = ExtResource("1_318cl")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(8, 8)
+texture = ExtResource("2_bigqo")
+
+[node name="Area2D" type="Area2D" parent="Sprite"]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="Sprite/Area2D"]
+shape = SubResource("RectangleShape2D_6mjij")
+
+[node name="Item" type="Node2D" parent="."]
+
+[connection signal="input_event" from="Sprite/Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Sprite/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Sprite/Area2D" to="." method="_on_area_2d_mouse_exited"]

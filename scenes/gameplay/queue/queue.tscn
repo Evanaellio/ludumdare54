@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://i0y8p7u3goat"]
+
+[ext_resource type="Script" path="res://scenes/gameplay/queue/queue.gd" id="1_5p6ie"]
+[ext_resource type="PackedScene" uid="uid://c6d4ofdrwafyb" path="res://scenes/gameplay/queue/item_slot.tscn" id="4_sb5mx"]
+
+[node name="Queue" type="Node2D"]
+script = ExtResource("1_5p6ie")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(223, 152)
+polygon = PackedVector2Array(-223, -148, -59, -150, -56, 309, -215, 308)
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="slot1" parent="Items" instance=ExtResource("4_sb5mx")]
+position = Vector2(82, 57)
+scale = Vector2(0.125, 0.125)
+
+[node name="slot2" parent="Items" instance=ExtResource("4_sb5mx")]
+position = Vector2(82, 128)
+scale = Vector2(0.125, 0.125)
+
+[node name="slot3" parent="Items" instance=ExtResource("4_sb5mx")]
+position = Vector2(82, 200)
+scale = Vector2(0.125, 0.125)
+
+[node name="slot4" parent="Items" instance=ExtResource("4_sb5mx")]
+position = Vector2(82, 271)
+scale = Vector2(0.125, 0.125)
+
+[node name="slot5" parent="Items" instance=ExtResource("4_sb5mx")]
+position = Vector2(82, 345)
+scale = Vector2(0.125, 0.125)
+
+[connection signal="item_picked_up" from="Items/slot1" to="." method="_on_item_picked_up"]
+[connection signal="item_picked_up" from="Items/slot2" to="." method="_on_item_picked_up"]
+[connection signal="item_picked_up" from="Items/slot3" to="." method="_on_item_picked_up"]
+[connection signal="item_picked_up" from="Items/slot4" to="." method="_on_item_picked_up"]
+[connection signal="item_picked_up" from="Items/slot5" to="." method="_on_item_picked_up"]
