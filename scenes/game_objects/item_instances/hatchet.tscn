@@ -9,7 +9,6 @@
 [node name="Item" parent="." instance=ExtResource("1_df5t6")]
 
 [node name="TileMap" parent="Item" index="0"]
-rotation = 0.0019937
 layer_0/tile_data = PackedInt32Array(-65536, 0, 65536, 0, 0, 65536, 1, 0, 65536, -65535, 0, 65536, -1, 0, 65536, -2, 0, 65536)
 
 [node name="HaloMap" type="TileMap" parent="Item"]
