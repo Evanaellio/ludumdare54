@@ -51,7 +51,7 @@ offset_bottom = 40.0
 disable_3d = true
 handle_input_locally = false
 gui_disable_input = true
-size = Vector2i(650, 512)
+size = Vector2i(912, 512)
 render_target_update_mode = 4
 
 [node name="TestBiome" parent="SubViewportContainer/SubViewport" instance=ExtResource("3_lq371")]
@@ -134,10 +134,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 415.0
-offset_top = -15.0
-offset_right = 585.0
-offset_bottom = 12.0
+offset_left = 700.0
+offset_top = -12.0
+offset_right = 870.0
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -161,10 +161,10 @@ offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="GUI/Fight"]
 layout_mode = 0
-offset_left = 280.0
-offset_top = 55.0
-offset_right = 348.0
-offset_bottom = 81.0
+offset_left = 424.0
+offset_top = 24.0
+offset_right = 492.0
+offset_bottom = 50.0
 text = "fighting!"
 
 [node name="Query" type="Control" parent="GUI"]

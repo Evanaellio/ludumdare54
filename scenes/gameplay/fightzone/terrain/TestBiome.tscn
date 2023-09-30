@@ -4,14 +4,18 @@
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-[node name="Polygon2D" type="Polygon2D" parent="ParallaxBackground"]
-color = Color(0.301961, 0.67451, 1, 1)
-polygon = PackedVector2Array(0, 0, 832, 0, 832, 88, 0, 88)
+[node name="Layer0" type="ParallaxLayer" parent="ParallaxBackground"]
+scale = Vector2(5, 1)
+motion_mirroring = Vector2(192, 0)
 
-[node name="Polygon2D2" type="Polygon2D" parent="ParallaxBackground"]
+[node name="Polygon2D" type="Polygon2D" parent="ParallaxBackground/Layer0"]
+color = Color(0.301961, 0.67451, 1, 1)
+polygon = PackedVector2Array(0, 0, 192, 0, 192, 88, 0, 88)
+
+[node name="Polygon2D2" type="Polygon2D" parent="ParallaxBackground/Layer0"]
 position = Vector2(0, 88)
 color = Color(0.564706, 0.494118, 0.301961, 1)
-polygon = PackedVector2Array(0, 0, 832, 0, 832, 40, 0, 40)
+polygon = PackedVector2Array(0, 0, 192, 0, 192, 40, 0, 40)
 
 [node name="Layer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2(580, 0)
