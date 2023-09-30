@@ -20,11 +20,13 @@ func _input(event: InputEvent):
 				selectedItem.rotate(PI / 2)
 				frameProcessed = true
 	if event is InputEventMouseButton && event.button_index == 4:
-		selectedItem.rotate(PI / 2)
-		frameProcessed = true
+		if selectedItem != null:
+			selectedItem.rotate(PI / 2)
+			frameProcessed = true
 	if event is InputEventMouseButton && event.button_index == 5:
-		selectedItem.rotate(-PI / 2)
-		frameProcessed = true
+		if selectedItem != null:
+			selectedItem.rotate(-PI / 2)
+			frameProcessed = true
 
 func selectItem(item: Node2D):
 	if (not frameProcessed) and selectedItem == null:

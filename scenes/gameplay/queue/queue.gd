@@ -39,7 +39,6 @@ func add_to_queue(item_name: String):
 func add_random_to_queue():
 	var n = ItemsPacks.keys()[randi() % ItemsPacks.keys().size()]
 	add_to_queue(n)
-	add_to_queue("arrow")
 
 func has_space() -> bool:
 	return _first_free() != null

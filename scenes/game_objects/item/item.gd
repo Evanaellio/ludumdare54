@@ -11,6 +11,7 @@ const OCCUPIED = Vector2i(0, 0)
 
 func _ready():
 	print(occupied_tilemap)
+	$TileMap.hide()
 
 func on_click():
 	# Might need a global (autloaded) singleton to do that and make sure only one item is selected at once
