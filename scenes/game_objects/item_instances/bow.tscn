@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dojv5nbouq7c7"]
+
+[ext_resource type="PackedScene" uid="uid://btmbhhii75uyt" path="res://scenes/game_objects/item/item.tscn" id="1_df5t6"]
+
+[node name="Bow" type="Node2D"]
+
+[node name="Item" parent="." instance=ExtResource("1_df5t6")]
+
+[node name="TileMap" parent="Item" index="0"]
+rotation = 0.0019937
+layer_0/tile_data = PackedInt32Array(0, 0, 65536, -65536, 0, 65536, -131072, 0, 65536, 131071, 0, 65536, -131073, 0, 65536)
+
+[editable path="Item"]

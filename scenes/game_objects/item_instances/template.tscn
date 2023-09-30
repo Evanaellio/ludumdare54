@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://btmbhhii75uyt" path="res://scenes/game_objects/item/item.tscn" id="1_jdupe"]
 
-[node name="potion" type="Node2D"]
+[node name="Template" type="Node2D"]
 
-[node name="item" parent="." instance=ExtResource("1_jdupe")]
+[node name="Item" parent="." instance=ExtResource("1_jdupe")]
 
-[editable path="item"]
+[editable path="Item"]
