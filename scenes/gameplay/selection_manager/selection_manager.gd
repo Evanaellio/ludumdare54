@@ -30,8 +30,8 @@ func dropItem(target):
 		# La on demande à l'autre tanche de faire sa vérif - si oui, on balance
 		# Bon ça va laisser l'item là comme une merde, mais bon
 		frameProcessed = true
-		target.placeItem(selectedItem)
-		selectedItem = null
+		if target.placeItem(selectedItem):
+			selectedItem = null
 
 func getSelectedItem():
 	return selectedItem

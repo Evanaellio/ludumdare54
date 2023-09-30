@@ -9,7 +9,7 @@
 
 [node name="backpack" parent="." instance=ExtResource("1_637xv")]
 
-[node name="OccupiedTileMap" parent="backpack" index="1"]
+[node name="OccupiedTileMap" parent="backpack" index="0"]
 layer_0/tile_data = PackedInt32Array(0, 0, 0, 131073, 0, 0, 196609, 0, 0, 196610, 0, 0, 131074, 0, 0, 327684, 0, 0, 393221, 0, 0, 327686, 0, 0, 131080, 0, 0, 131081, 0, 0, 196617, 0, 0, 196618, 0, 0)
 
 [node name="Bow" parent="." instance=ExtResource("2_sq3by")]

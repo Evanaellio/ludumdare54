@@ -14,7 +14,6 @@ func _ready():
 
 func on_click():
 	# Might need a global (autloaded) singleton to do that and make sure only one item is selected at once
-	print("On CLICK from item tile")
 	get_node("/root/SelectionManager").selectItem(self)
 	check_occupied()
 
