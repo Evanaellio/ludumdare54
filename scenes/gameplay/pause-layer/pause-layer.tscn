@@ -9,6 +9,7 @@ process_mode = 3
 script = ExtResource("2")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -25,10 +26,11 @@ ESC (keyboard) or
 START button (joypad)"
 
 [node name="PauseButton" type="TextureButton" parent="."]
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 78.0
-offset_bottom = 78.0
+offset_left = 904.0
+offset_top = 8.0
+offset_right = 966.0
+offset_bottom = 70.0
+scale = Vector2(0.75, 0.75)
 texture_normal = ExtResource("4")
 
 [node name="PauseOverlay" type="Control" parent="."]

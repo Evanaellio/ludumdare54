@@ -32,8 +32,10 @@ property_name=1
 
 [display]
 
+window/size/viewport_width=720
+window/size/viewport_height=624
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/scale=0.75
 
 [editor_plugins]
 
