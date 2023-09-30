@@ -5,6 +5,7 @@
 [node name="Bow" type="Node2D"]
 
 [node name="Item" parent="." instance=ExtResource("1_df5t6")]
+position = Vector2(0, 32)
 
 [node name="TileMap" parent="Item" index="0"]
 rotation = 0.0019937
