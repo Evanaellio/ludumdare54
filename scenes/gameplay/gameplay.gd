@@ -31,4 +31,6 @@ func _process(delta):
 
 
 func _on_queue_item_picked_up(item_node: Node2D):
-	$Backpack.add_child(item_node.duplicate())
+	var item = item_node.duplicate()
+	$Backpack.add_child(item)
+	get_node("/root/SelectionManager").selectItem(item.get_node("Item"))

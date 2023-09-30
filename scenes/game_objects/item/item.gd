@@ -11,7 +11,8 @@ func on_click():
 	# TODO : here, pickup the item and snap it to the mouse
 	# Might need a global (autloaded) singleton to do that and make sure only one item is selected at once
 	print("On CLICK from item tile")
-	check_occupied()
+	get_node("/root/SelectionManager").selectItem(self)
+	#check_occupied()
 
 func tile_ready(tile):
 	tile_nodes.append(tile)
@@ -22,4 +23,3 @@ func check_occupied():
 		var map_coords = occupied_tilemap.local_to_map(local_coords)
 		var status = occupied_tilemap.get_cell_atlas_coords(0, map_coords)
 		tile_node.set_error(status == OCCUPIED)
-			
