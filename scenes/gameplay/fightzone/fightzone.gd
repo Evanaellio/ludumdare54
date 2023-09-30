@@ -11,6 +11,11 @@ extends Node2D
 
 @onready var background = $SubViewportContainer/SubViewport/TestBiome
 
+@onready var quest_gui: Control = $GUI/Query
+@onready var quest_slot: Control = $GUI/Query/ItemViewport/SubViewport/ItemAttach
+@onready var quest_progress: ProgressBar = $GUI/QueryProgressBar
+@onready var quest_timer: Timer = $QuestTimer
+
 signal found_loot
 
 enum States {WALK, FIGHT}
@@ -20,15 +25,20 @@ var boosted = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	quest_progress.hide()
+	quest_gui.hide()
 	fight_gui.hide()
+
 	next_loot()
 	next_fight()
-	boost()
+	next_quest()
+	# boost()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	boost_remaining.value = boost_timer.time_left / boost_timer.wait_time
 	loot_progress.value = 1 - loot_timer.time_left / loot_timer.wait_time
+	quest_progress.value = quest_timer.time_left / quest_timer.wait_time
 	
 	if state == States.WALK:
 		background.get_node("ParallaxBackground").scroll_offset += Vector2(-delta * 8, 0)
@@ -71,5 +81,18 @@ func _on_boost_timer_timeout():
 	boosted = false
 	boost_remaining.hide()
 
+func next_quest():
+	var request = "bow"
+	var pack: PackedScene = load("res://scenes/game_objects/item_instances/" + request +".tscn")
+	var item = pack.instantiate()
+	
+	quest_slot.add_child(item)
+	
+	var quest_length = 30
+	quest_timer.start(quest_length)
+	quest_progress.show()
+	quest_gui.show()
 
-
+func _on_quest_timer_timeout():
+	quest_progress.hide()
+	quest_gui.hide()
