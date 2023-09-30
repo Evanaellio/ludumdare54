@@ -14,6 +14,8 @@ func pre_start(params):
 			printt("", key, val)
 	$PauseLayer.visible = true
 
+	$Fightzone.connect("found_loot", Callable($Queue, "add_random_to_queue").bind())
+
 
 # `start()` is called after pre_start and after the graphic transition ends.
 func start():
