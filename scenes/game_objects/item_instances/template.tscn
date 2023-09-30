@@ -1,9 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://bo0wu52mnt8pw"]
+[gd_scene load_steps=3 format=3 uid="uid://bo0wu52mnt8pw"]
 
 [ext_resource type="PackedScene" uid="uid://btmbhhii75uyt" path="res://scenes/game_objects/item/item.tscn" id="1_jdupe"]
+[ext_resource type="TileSet" uid="uid://cm070lr0xrfe6" path="res://assets/sprites/item_halo/halo_tileset.tres" id="2_y0h03"]
 
 [node name="Template" type="Node2D"]
 
 [node name="Item" parent="." instance=ExtResource("1_jdupe")]
+
+[node name="HaloMap" type="TileMap" parent="Item"]
+tile_set = ExtResource("2_y0h03")
+format = 2
 
 [editable path="Item"]

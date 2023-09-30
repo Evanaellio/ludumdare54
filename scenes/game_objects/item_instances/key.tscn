@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6qi6vtxse0mx"]
+[gd_scene load_steps=3 format=3 uid="uid://b6qi6vtxse0mx"]
 
 [ext_resource type="PackedScene" uid="uid://btmbhhii75uyt" path="res://scenes/game_objects/item/item.tscn" id="1_moopu"]
+[ext_resource type="TileSet" uid="uid://cm070lr0xrfe6" path="res://assets/sprites/item_halo/halo_tileset.tres" id="2_8q1om"]
 
 [node name="Key" type="Node2D"]
 
@@ -9,5 +10,11 @@ position = Vector2(32, -32)
 
 [node name="TileMap" parent="Item" index="0"]
 layer_0/tile_data = PackedInt32Array(65534, 0, 65536, 65535, 0, 65536, 0, 0, 65536, -65536, 0, 65536)
+
+[node name="HaloMap" type="TileMap" parent="Item"]
+modulate = Color(1, 1, 1, 0.509804)
+tile_set = ExtResource("2_8q1om")
+format = 2
+layer_0/tile_data = PackedInt32Array(65532, 262145, 0, 131068, 327681, 0, 131069, 65537, 0, 65533, 1, 0, 65534, 1, 0, 131070, 65537, 0, 131071, 65537, 0, 65535, 1, 0, 65536, 65537, 0, 0, 1048577, 0, 65537, 393217, 0, 1, 196609, 0, -65535, 196609, 0, -131071, 458753, 0, -131072, 262145, 0, -65536, 131073, 0)
 
 [editable path="Item"]

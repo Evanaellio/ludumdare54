@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var loot_timer: Timer = $LootTimer
-@onready var loot_progress = $GUI/LootProgressBar
+@onready var loot_progress: ProgressBar = $GUI/LootProgressBar
 @onready var boost_timer: Timer = $BoostTimer
 @onready var boost_remaining: ProgressBar = $GUI/BoostProgressBar
 @onready var fight_gui: Control = $GUI/Fight
