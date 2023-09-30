@@ -30,8 +30,11 @@ func _on_item_picked_up(item_node: Node2D):
 
 func add_to_queue(item_name: String):
 	var slot = _first_free()
-	var pack = ItemsPacks.get(item_name, null)
-	slot.item = pack
+	if slot != null:
+		var pack = ItemsPacks.get(item_name, null)
+		slot.item = pack
+	else:
+		print("queue is full!")
 
 func add_random_to_queue():
 	var n = ItemsPacks.keys()[randi() % ItemsPacks.keys().size()]

@@ -12,7 +12,13 @@ const OCCUPIED = Vector2i(0, 0)
 func on_click():
 	# TODO : here, pickup the item and snap it to the mouse
 	# Might need a global (autloaded) singleton to do that and make sure only one item is selected at once
+<<<<<<< HEAD
 	check_occupied()
+=======
+	print("On CLICK from item tile")
+	get_node("/root/SelectionManager").selectItem(self)
+	#check_occupied()
+>>>>>>> 3af34ba67891e34961c8d5ab3bf8180c3c5e7a3b
 
 func tile_ready(tile):
 	tile_nodes.append(tile)
@@ -26,6 +32,7 @@ func check_occupied() -> bool:
 	for tile_node in tile_nodes:
 		var map_coords = get_map_coords_for_tile_node(tile_node)
 		var status = occupied_tilemap.get_cell_atlas_coords(0, map_coords)
+<<<<<<< HEAD
 		if status == OCCUPIED:
 			return true
 	return false
@@ -44,3 +51,6 @@ func place_in_backpack() -> bool:
 		return true
 	else:
 		return false
+=======
+		tile_node.set_error(status == OCCUPIED)
+>>>>>>> 3af34ba67891e34961c8d5ab3bf8180c3c5e7a3b

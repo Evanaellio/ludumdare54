@@ -14,6 +14,8 @@ func pre_start(params):
 			printt("", key, val)
 	$PauseLayer.visible = true
 
+	$Fightzone.connect("found_loot", Callable($Queue, "add_random_to_queue").bind())
+
 
 # `start()` is called after pre_start and after the graphic transition ends.
 func start():
@@ -29,4 +31,6 @@ func _process(delta):
 
 
 func _on_queue_item_picked_up(item_node: Node2D):
-	$Backpack.add_child(item_node.duplicate())
+	var item = item_node.duplicate()
+	$Backpack.add_child(item)
+	get_node("/root/SelectionManager").selectItem(item.get_node("Item"))

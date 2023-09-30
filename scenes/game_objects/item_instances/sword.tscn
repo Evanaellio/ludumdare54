@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c1q8fat8svu3g"]
+[gd_scene load_steps=3 format=3 uid="uid://c1q8fat8svu3g"]
 
 [ext_resource type="PackedScene" uid="uid://btmbhhii75uyt" path="res://scenes/game_objects/item/item.tscn" id="1_m1dn0"]
+[ext_resource type="TileSet" uid="uid://cm070lr0xrfe6" path="res://assets/sprites/item_halo/halo_tileset.tres" id="2_0r8ot"]
 
 [node name="Sword" type="Node2D"]
 
@@ -9,5 +10,11 @@ position = Vector2(32, 32)
 
 [node name="TileMap" parent="Item" index="0"]
 layer_0/tile_data = PackedInt32Array(-2, 0, 65536, -1, 0, 65536, -65537, 0, 65536, 65535, 0, 65536, -65536, 0, 65536, -65535, 0, 65536, 1, 0, 65536, 2, 0, 65536)
+
+[node name="HaloMap" type="TileMap" parent="Item"]
+modulate = Color(1, 1, 1, 0.509804)
+tile_set = ExtResource("2_0r8ot")
+format = 2
+layer_0/tile_data = PackedInt32Array(131070, 327681, 0, 65534, 131073, 0, -2, 1179649, 0, -3, 65537, 0, -4, 327681, 0, -65540, 262145, 0, -65539, 1, 0, -65538, 1048577, 0, -131074, 131073, 0, -196610, 262145, 0, -196609, 458753, 0, -131073, 196609, 0, -65537, 1114113, 0, -1, 1245185, 0, 65535, 196609, 0, 131071, 393217, 0, -65536, 65537, 0, -65535, 65537, 0, -65534, 1179649, 0, -131070, 1, 0, -131071, 1, 0, -131072, 1, 0, -131069, 458753, 0, -65533, 196609, 0, 2, 131073, 0, 65538, 327681, 0, 65539, 65537, 0, 3, 1114113, 0, 65540, 65537, 0, 65541, 393217, 0, 5, 458753, 0, 4, 1, 0)
 
 [editable path="Item"]

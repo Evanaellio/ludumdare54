@@ -18,9 +18,11 @@ var highlight: bool = false
 signal item_picked_up
 
 func selectItem():
-	print("item picked up")
-	item_picked_up.emit(item_ptr)
-	item = null
+	if item != null:
+		print("item picked up")
+		item_picked_up.emit(item_ptr)
+		item = null
+		item_ptr = null
 
 func _on_area_2d_mouse_entered():
 	$Sprite.modulate = "#1edeff"
