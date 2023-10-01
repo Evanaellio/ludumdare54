@@ -117,9 +117,19 @@ func clear_preview():
 
 func custom_rotate(radians: float) -> void:
 	self.rotate(radians)
-	if item_type == "MagicPotion":
-		var liquid: Sprite2D = $"./Liquid"
-		liquid.rotate(-radians)
+	match item_type:
+		"MagicPotion":
+			var liquid: Sprite2D = $"./Liquid"
+			liquid.rotate(-radians)
+		"MagicMorningJJ":
+			var jj: Sprite2D = $"./JJ"
+			jj.rotate(-radians)
+			var rot = absf(fmod(jj.get_rotation(), 2*PI))
+			# aesthetic flip when item is rotated up
+			if (0.75*PI < rot) && (rot < 1.25*PI):
+				jj.flip_h = true
+			else:
+				jj.flip_h = false
 
 func noise():
 	$pickupSfx.play()

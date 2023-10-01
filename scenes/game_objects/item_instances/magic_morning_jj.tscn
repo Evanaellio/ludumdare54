@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://co4cjc641roxo"]
+
+[ext_resource type="PackedScene" uid="uid://btmbhhii75uyt" path="res://scenes/game_objects/item/item.tscn" id="1_x0qtp"]
+[ext_resource type="AudioStream" uid="uid://dl18o56e6pwd2" path="res://assets/sfx/heavy.wav" id="2_rwlpb"]
+[ext_resource type="Texture2D" uid="uid://3e0ji3cnsn81" path="res://assets/sprites/items/fleau_without_jj.png" id="3_1riwv"]
+[ext_resource type="Texture2D" uid="uid://bdkbbeyhix01d" path="res://assets/sprites/items/jj_only.png" id="4_ditpk"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_224px"]
+streams_count = 1
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("2_rwlpb")
+stream_0/weight = 1.0
+
+[node name="MagicMorningJJ" type="Node2D"]
+
+[node name="Item" parent="." instance=ExtResource("1_x0qtp")]
+position = Vector2(32, -64)
+item_type = "MagicMorningJJ"
+
+[node name="TileMap" parent="Item" index="0"]
+layer_0/tile_data = PackedInt32Array(-1, 0, 65536, -65536, 0, 65536, 131071, 0, 65536, 196607, 0, 65536, 0, 0, 65536, -2, 0, 65536, 131070, 0, 65536, 196606, 0, 65536)
+
+[node name="HaloMap" parent="Item" index="1"]
+layer_0/tile_data = PackedInt32Array(327676, 131073, 0, 393212, 327681, 0, 393213, 65537, 0, 327677, 1966081, 0, 327678, 1966081, 0, 393214, 65537, 0, 393215, 393217, 0, 327679, 196609, 0, 262143, 196609, 0, 196607, 458753, 0, 196606, 1, 0, 196605, 1, 0, 196604, 262145, 0, 262140, 131073, 0, 262141, 1966081, 0, 262142, 1966081, 0, 0, 131073, 0, 65536, 327681, 0, 65537, 393217, 0, 1, 196609, 0, -65535, 196609, 0, -65536, 1179649, 0, -131072, 1, 0, -131071, 458753, 0, -65537, 1, 0, -1, 65537, 0, -2, 65537, 0, -65538, 1, 0, -65539, 1, 0, -65540, 262145, 0, -4, 327681, 0, -3, 65537, 0)
+
+[node name="pickupSfx" parent="Item" index="2"]
+stream = SubResource("AudioStreamRandomizer_224px")
+
+[node name="Fleau" type="Sprite2D" parent="Item"]
+position = Vector2(-32, 64)
+scale = Vector2(2, 2)
+texture = ExtResource("3_1riwv")
+
+[node name="JJ" type="Sprite2D" parent="Item"]
+position = Vector2(-64, 128)
+scale = Vector2(2, 2)
+texture = ExtResource("4_ditpk")
+
+[editable path="Item"]

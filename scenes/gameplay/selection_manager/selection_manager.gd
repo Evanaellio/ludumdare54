@@ -9,8 +9,9 @@ var ItemsPacks = {
 	"hatchet":   preload("res://scenes/game_objects/item_instances/hatchet.tscn"),
 	"key":       preload("res://scenes/game_objects/item_instances/key.tscn"),
 	"magic_potion": preload("res://scenes/game_objects/item_instances/magic_potion.tscn"),
-	"morning_jj":preload("res://scenes/game_objects/item_instances/morning_jj.tscn"),
-	"potion":    preload("res://scenes/game_objects/item_instances/potion.tscn"),
+	"magic_morning_jj":preload("res://scenes/game_objects/item_instances/magic_morning_jj.tscn"),
+	#"morning_jj":preload("res://scenes/game_objects/item_instances/morning_jj.tscn"),
+	#"potion":    preload("res://scenes/game_objects/item_instances/potion.tscn"),
 	"sword":     preload("res://scenes/game_objects/item_instances/sword.tscn"),
 }
 
