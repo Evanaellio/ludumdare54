@@ -194,10 +194,10 @@ render_target_update_mode = 4
 layout_mode = 3
 anchors_preset = 0
 offset_left = 73.0
-offset_top = 58.0
+offset_top = 64.0
 offset_right = 113.0
-offset_bottom = 98.0
-scale = Vector2(0.25, 0.25)
+offset_bottom = 104.0
+scale = Vector2(0.375, 0.375)
 
 [node name="FightTimer" type="Timer" parent="."]
 one_shot = true

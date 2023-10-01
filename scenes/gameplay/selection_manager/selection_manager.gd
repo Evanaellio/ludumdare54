@@ -1,5 +1,18 @@
 extends Node
 
+var ItemsPacks = {
+	"apple":     preload("res://scenes/game_objects/item_instances/apple.tscn"),
+	"armor":     preload("res://scenes/game_objects/item_instances/armor.tscn"),
+	"arrow":     preload("res://scenes/game_objects/item_instances/arrow.tscn"),
+	"boomerang": preload("res://scenes/game_objects/item_instances/boomerang.tscn"),
+	"bow":       preload("res://scenes/game_objects/item_instances/bow.tscn"),
+	"hatchet":   preload("res://scenes/game_objects/item_instances/hatchet.tscn"),
+	"key":       preload("res://scenes/game_objects/item_instances/key.tscn"),
+	"morning_jj":preload("res://scenes/game_objects/item_instances/morning_jj.tscn"),
+	"potion":    preload("res://scenes/game_objects/item_instances/potion.tscn"),
+	"sword":     preload("res://scenes/game_objects/item_instances/sword.tscn"),
+}
+
 var selectedItem: Node2D = null
 var frameProcessed = false;
 

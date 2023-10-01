@@ -18,7 +18,7 @@ color = Color(0.564706, 0.494118, 0.301961, 1)
 polygon = PackedVector2Array(0, 0, 192, 0, 192, 40, 0, 40)
 
 [node name="Layer2" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(580, 0)
+motion_mirroring = Vector2(800, 0)
 
 [node name="Polygon2D4" type="Polygon2D" parent="ParallaxBackground/Layer2"]
 position = Vector2(40, 0)
@@ -30,7 +30,7 @@ color = Color(0.533333, 0.552941, 0.498039, 1)
 polygon = PackedVector2Array(144, 88, 104, 40, 168, 88)
 
 [node name="Polygon2D5" type="Polygon2D" parent="ParallaxBackground/Layer2"]
-position = Vector2(480, 0)
+position = Vector2(408, 0)
 color = Color(0.662745, 0.690196, 0.619608, 1)
 polygon = PackedVector2Array(64, 88, 120, 24, 168, 88)
 
@@ -39,7 +39,7 @@ color = Color(0.545098, 0.564706, 0.509804, 1)
 polygon = PackedVector2Array(136, 88, 120, 24, 168, 88)
 
 [node name="Polygon2D6" type="Polygon2D" parent="ParallaxBackground/Layer2"]
-position = Vector2(352, 0)
+position = Vector2(680, 0)
 color = Color(0.792157, 0.823529, 0.741176, 1)
 polygon = PackedVector2Array(64, 88, 88, 48, 136, 88)
 
@@ -58,7 +58,7 @@ polygon = PackedVector2Array(160, 88, 168, 8, 216, 88)
 
 [node name="Layer1" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(2, 2)
-motion_mirroring = Vector2(550, 0)
+motion_mirroring = Vector2(750, 0)
 
 [node name="Polygon2D" type="Polygon2D" parent="ParallaxBackground/Layer1"]
 color = Color(0.313726, 0.780392, 0.396078, 1)
@@ -85,6 +85,15 @@ polygon = PackedVector2Array(64, 88, 104, 40, 136, 88)
 [node name="Polygon2D5" type="Polygon2D" parent="ParallaxBackground/Layer1/Polygon2D2"]
 color = Color(0.25098, 0.623529, 0.317647, 1)
 polygon = PackedVector2Array(120, 88, 104, 40, 136, 88)
+
+[node name="Polygon2D5" type="Polygon2D" parent="ParallaxBackground/Layer1"]
+position = Vector2(568, 0)
+color = Color(0.313726, 0.780392, 0.396078, 1)
+polygon = PackedVector2Array(64, 88, 80, 48, 128, 88)
+
+[node name="Polygon2D5" type="Polygon2D" parent="ParallaxBackground/Layer1/Polygon2D5"]
+color = Color(0.25098, 0.623529, 0.317647, 1)
+polygon = PackedVector2Array(88, 88, 80, 48, 136, 88)
 
 [node name="Polygon2D3" type="Polygon2D" parent="ParallaxBackground/Layer1"]
 position = Vector2(128, 0)

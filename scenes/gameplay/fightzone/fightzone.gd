@@ -17,6 +17,8 @@ extends Node2D
 @onready var quest_timer: Timer = $QuestTimer
 @onready var next_quest_timer: Timer = $NextQuestTimer
 
+@onready var ItemsPacks = get_node("/root/SelectionManager").ItemsPacks
+
 signal found_loot
 
 enum States {WALK, FIGHT}
@@ -95,11 +97,12 @@ func _on_next_quest_timer_timeout():
 	start_quest()
 
 func start_quest():
-	var request = "bow"
-	var pack: PackedScene = load("res://scenes/game_objects/item_instances/" + request +".tscn")
+	var request = ItemsPacks.keys()[randi() % ItemsPacks.keys().size()]
+	var pack: PackedScene = ItemsPacks.get(request)
 	var item = pack.instantiate()
 	
 	requestItemType = item.get_node("Item").item_type
+	print("requesting item : " + requestItemType)
 	
 	quest_slot.add_child(item)
 	
@@ -109,18 +112,21 @@ func start_quest():
 	quest_gui.show()
 
 func _on_quest_timer_timeout():
+	cancel_quest()
+
+func cancel_quest():
 	quest_progress.hide()
 	quest_gui.hide()
+	quest_timer.stop()
+
 	requestItemType = ""
+
+	for _i in quest_slot.get_children():
+		_i.queue_free()
+
 	if not boosted:
 		print("sad :(")
 		next_quest()
-
-func cancel_quest():
-	for _i in quest_slot.get_children():
-		_i.queue_free()
-	quest_timer.stop()
-	_on_quest_timer_timeout()
 
 var clicking = false
 func _on_deposit_area_input_event(_viewport, event, _shape_idx):
