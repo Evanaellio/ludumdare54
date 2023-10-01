@@ -8,10 +8,9 @@ func _ready():
 	
 func _process(delta):
 	frameProcessed = false;
-	if selectedItem == null:
-		pass
-	else:
+	if selectedItem:
 		snap_item_to_cursor()
+		selectedItem.display_preview()
 
 func _input(event: InputEvent):
 	if frameProcessed:
@@ -35,6 +34,7 @@ func selectItem(item: Node2D):
 		print("selecting item")
 		frameProcessed = true
 		selectedItem = item
+		selectedItem.disable_collisions()
 		snap_item_to_cursor()
 		item.clear_previously_occupied_by_me()
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)

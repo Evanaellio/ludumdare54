@@ -23,7 +23,6 @@ func display_preview():
 
 func on_click():
 	selection_manager.selectItem(self)
-	disable_collisions()
 	check_occupied()
 
 func tile_ready(tile):
