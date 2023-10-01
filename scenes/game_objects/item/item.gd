@@ -9,7 +9,6 @@ extends Node2D
 @onready var selection_manager = $"/root/SelectionManager"
 
 var tile_nodes : Array[Node2D] = []
-
 var tiles_occupied_by_me : Array[Vector2i] = []
 
 const EMPTY = Vector2i(-1, -1)
@@ -80,3 +79,57 @@ func enable_collisions():
 
 func clear_preview():
 	preview_tilemap.clear()
+
+
+# ooooooooo.         .o.       ooooooooo.   ooooo ooooooooooooo oooooo   oooo 
+# `888   `Y88.      .888.      `888   `Y88. `888' 8'   888   `8  `888.   .8'  
+#  888   .d88'     .8"888.      888   .d88'  888       888        `888. .8'   
+#  888ooo88P'     .8' `888.     888ooo88P'   888       888         `888.8'    
+#  888`88b.      .88ooo8888.    888`88b.     888       888          `888'     
+#  888  `88b.   .8'     `888.   888  `88b.   888       888           888      
+# o888o  o888o o88o     o8888o o888o  o888o o888o     o888o         o888o     
+
+const RARITY_COLORS : Array[Color] = [
+	Color("ecf0f1"), # white
+	Color("2ecc71"), # green
+	Color("2980b9"), # blue
+	Color("8e44ad"), # purple
+	Color("f39c12")  # orange
+]
+
+var base_score: int = -1
+
+## from 0 (common) to 4 (rare)
+var rarity: int = -1
+
+## compute score based on base_score and rarity
+func get_score() -> int:
+	return base_score * 2^rarity
+
+func set_rarity(new_rarity: int):
+	rarity = new_rarity
+	if rarity >= 0 and rarity < RARITY_COLORS.size():
+		var new_color = RARITY_COLORS[rarity]
+
+## rarity can only increase
+func incr_rarity() -> void:
+	set_rarity(rarity + 1)
+
+## compute base_score using side length
+func _set_base_score() -> void:
+	var used: Array[Vector2i] = %TileMap.get_used_cells(0)
+	var empty_count: int = 0
+	
+	var neightbors: Array[Vector2i] = [Vector2i(1,0), Vector2i(-1,0), Vector2i(0,1), Vector2i(0,-1)]
+	for cell in used:
+		for neight in neightbors:
+			var test_coord: Vector2i = cell + neight
+			if used.find(test_coord) == -1:
+				empty_count += 1
+	base_score = empty_count
+
+## setting base_score and rarity
+func _ready() -> void:
+	_set_base_score()
+	set_rarity(0)
+
