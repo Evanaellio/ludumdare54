@@ -7,7 +7,8 @@
 [node name="Armor" type="Node2D"]
 
 [node name="Item" parent="." instance=ExtResource("1_ep48b")]
-position = Vector2(-32, 32)
+position = Vector2(32, -32)
+rotation = 3.14159
 item_type = "Armor"
 
 [node name="TileMap" parent="Item" index="0"]
