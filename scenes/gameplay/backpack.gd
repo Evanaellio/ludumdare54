@@ -50,7 +50,6 @@ func set_item_lookup_at(item: Node2D, coords: Array[Vector2i]) -> void:
 		item_lookup[c.x + c.y * WIDTH] = item
 
 func add_item_to_lookup(item: Node2D) -> Array[int]:
-	#print(item.tiles_occupied_by_me)
 	set_item_lookup_at(item, item.tiles_occupied_by_me)
 	
 	var stained_lines: Array[int] = []
@@ -115,9 +114,7 @@ func placeItem(item: Node2D) -> Node2D:
 	snap_item_to_grid(item)
 	queue.item_taken_from_queue()
 	var stained_lines: Array[int] = add_item_to_lookup(item)
-	#print(stained_lines)
 	var completed_lines: Array[int] = get_completed_lines(stained_lines)
-	#print(completed_lines)
 	if !completed_lines.is_empty():
 		upgradable_items = get_items_from_completed_lines(completed_lines)
 		print(upgradable_items)

@@ -3,6 +3,7 @@ extends Node2D
 
 @export var item_type: String
 
+@onready var gameplay = $"/root/Gameplay"
 @onready var backpack : Node2D = $"/root/Gameplay/Backpack"
 @onready var occupied_tilemap : TileMap = $"/root/Gameplay/Backpack/OccupiedTileMap"
 @onready var preview_tilemap : TileMap = $"/root/Gameplay/Backpack/PreviewTileMap"
@@ -153,7 +154,8 @@ const RARITY_COLORS : Array[Color] = [
 	Color("2ecc71"), # green
 	Color("2980b9"), # blue
 	Color("8e44ad"), # purple
-	Color("f39c12")  # orange
+	Color("f39c12"),  # orange
+	Color("2c3e50")  # almost black, endgame item
 ]
 
 var base_score: int = -1
@@ -170,6 +172,9 @@ func set_rarity(new_rarity: int):
 	if rarity >= 0 and rarity < RARITY_COLORS.size():
 		var new_color = RARITY_COLORS[rarity]
 		set_color(new_color)
+	
+	if new_rarity == 5: # After a full line of orange, the player wins !
+		gameplay.win_game()
 
 func set_color(color : Color):
 	halo_map.modulate = color

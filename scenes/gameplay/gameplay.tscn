@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://4fyoq8npekf0"]
+[gd_scene load_steps=8 format=3 uid="uid://4fyoq8npekf0"]
 
 [ext_resource type="PackedScene" uid="uid://barl4q1kugrmm" path="res://scenes/gameplay/pause-layer/pause-layer.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://mt3uidtqqkjb" path="res://scenes/gameplay/score_gui/score_gui.tscn" id="2_l6dpm"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://i0y8p7u3goat" path="res://scenes/gameplay/queue/queue.tscn" id="5_ja52p"]
 [ext_resource type="PackedScene" uid="uid://bhaya5sk8xnk" path="res://scenes/gameplay/fightzone/fightzone.tscn" id="6_vhdhj"]
+[ext_resource type="PackedScene" uid="uid://djl3w76d3rg0l" path="res://scenes/gameplay/win_screen.tscn" id="7_6nuj1"]
 
 [node name="Gameplay" type="Node"]
 script = ExtResource("5")
@@ -24,5 +25,13 @@ position = Vector2(24, 24)
 
 [node name="ScoreGUI" parent="." instance=ExtResource("2_l6dpm")]
 mouse_filter = 2
+
+[node name="WinScreen" parent="." instance=ExtResource("7_6nuj1")]
+unique_name_in_owner = true
+visible = false
+offset_left = 37.0
+offset_top = 34.0
+offset_right = 37.0
+offset_bottom = 34.0
 
 [connection signal="item_picked_up" from="Queue" to="." method="_on_queue_item_picked_up"]

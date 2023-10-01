@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://djl3w76d3rg0l"]
+
+[sub_resource type="SystemFont" id="SystemFont_lg8fr"]
+
+[node name="WinScreen" type="Control"]
+z_index = 2000
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 210.0
+offset_right = 691.0
+offset_bottom = 372.0
+theme_override_fonts/normal_font = SubResource("SystemFont_lg8fr")
+bbcode_enabled = true
+text = "
+   [font_size=80][wave amp=50.0 freq=5.0 connected=1][rainbow freq=1.0 sat=0.8 val=0.8]VICOTORY 🥳[/rainbow] [/wave][/font_size]"
+tab_size = 24
