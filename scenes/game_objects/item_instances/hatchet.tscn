@@ -19,24 +19,4 @@ position = Vector2(2, 1)
 scale = Vector2(2, 2)
 texture = ExtResource("3_5qppt")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Item"]
-position = Vector2(-115, -51)
-amount = 133
-lifetime = 0.8
-explosiveness = 0.48
-randomness = 0.42
-emission_shape = 1
-emission_sphere_radius = 6.05
-direction = Vector2(-1, -1)
-spread = 2.35
-gravity = Vector2(0, 500)
-initial_velocity_min = 88.05
-initial_velocity_max = 459.12
-angular_velocity_min = -1.15
-angular_velocity_max = 2.1
-linear_accel_min = 2.61
-linear_accel_max = 100.0
-radial_accel_max = 90.2
-color = Color(1, 1, 0.0588235, 1)
-
 [editable path="Item"]
