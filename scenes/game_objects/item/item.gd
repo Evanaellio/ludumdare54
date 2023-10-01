@@ -33,7 +33,7 @@ func on_click():
 		backpack.removed_not_selected_upgrade(self)
 		is_electable_for_upgrade = false
 	else:
-		selection_manager.selectItem(self)
+		selection_manager.selectItem(self, null)
 
 func tile_ready(tile):
 	tile.get_node("Area2D").input_pickable = false

@@ -34,4 +34,4 @@ func _on_queue_item_picked_up(item_node: Node2D):
 	var selectionManager = get_node("/root/SelectionManager")
 	if selectionManager.selectedItem == null:
 		$Backpack.add_child(item_node)
-		selectionManager.selectItem(item_node.get_node("Item"))
+		selectionManager.selectItem(item_node.get_node("Item"), $Queue)

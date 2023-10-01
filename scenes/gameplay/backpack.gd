@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var queue = $"/root/Gameplay/Queue"
+
 @onready var occupied_tilemap : TileMap = %OccupiedTileMap
 
 @onready var first_map_coords : Vector2i
@@ -100,6 +102,7 @@ func snap_item_to_grid(item: Node2D) -> void:
 func placeItem(item: Node2D) -> bool:
 	if item.place_in_backpack():
 		snap_item_to_grid(item)
+		queue.item_placed_backpack()
 		var stained_lines: Array[int] = add_item_to_lookup(item)
 		#print(stained_lines)
 		var completed_lines: Array[int] = get_completed_lines(stained_lines)
@@ -110,7 +113,6 @@ func placeItem(item: Node2D) -> bool:
 			waiting_upgrade_selected = true
 			for i in upgradable_items:
 				i.is_electable_for_upgrade = true
-		
 		return true
 	else:
 		return false
