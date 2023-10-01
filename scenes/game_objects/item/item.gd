@@ -48,3 +48,9 @@ func place_in_backpack() -> bool:
 		return true
 	else:
 		return false
+
+func display_preview():
+	if not check_occupied:
+		for tile_node in tile_nodes:
+			var map_coords = get_map_coords_for_tile_node(tile_node)
+

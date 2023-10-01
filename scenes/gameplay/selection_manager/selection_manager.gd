@@ -3,13 +3,16 @@ extends Node
 var selectedItem: Node2D = null
 var frameProcessed = false;
 
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
 func _process(delta):
 	frameProcessed = false;
 	if selectedItem == null:
 		pass
 	else:
-		snapItemToCursor()
-		displayPreview()
+		snap_item_to_cursor()
+		display_preview()
 
 func _input(event: InputEvent):
 	if frameProcessed:
@@ -33,8 +36,9 @@ func selectItem(item: Node2D):
 		print("selecting item")
 		frameProcessed = true
 		selectedItem = item
-		snapItemToCursor()
+		snap_item_to_cursor()
 		item.clear_previously_occupied_by_me()
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func dropItem(target):
 	if (not frameProcessed) and not selectedItem == null:
@@ -44,11 +48,11 @@ func dropItem(target):
 		frameProcessed = true
 		if target.placeItem(selectedItem):
 			selectedItem = null
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
-func snapItemToCursor():
+func snap_item_to_cursor():
 	var mousePosition = get_viewport().get_mouse_position()
 	selectedItem.global_position = mousePosition
 
-func displayPreview(): 
-	pass
-	# print("zzz")
+func display_preview():
+	selectedItem.display_preview()
