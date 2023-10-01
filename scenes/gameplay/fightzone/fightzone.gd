@@ -78,7 +78,7 @@ func _on_fight_timer_timeout():
 
 # When NPC receives requested item
 func boost():
-	var boost_length = 10
+	var boost_length = 15
 	boost_timer.start(boost_length)
 	boosted = true
 	boost_remaining.show()
@@ -140,6 +140,9 @@ func _on_deposit_area_input_event(_viewport, event, _shape_idx):
 				if requestItemType == nodeName:
 					print("correct item " + nodeName)
 					get_node("/root/SelectionManager").destroyItem()
+					if get_node("/root/SelectionManager").selectedItemSource != null:
+						# if item taken directly from queue, release queue slot
+						get_node("/root/Gameplay/Queue").item_taken_from_queue()
 					boost()
 					cancel_quest()
 				else:

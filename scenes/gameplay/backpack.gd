@@ -102,7 +102,7 @@ func snap_item_to_grid(item: Node2D) -> void:
 func placeItem(item: Node2D) -> bool:
 	if item.place_in_backpack():
 		snap_item_to_grid(item)
-		queue.item_placed_backpack()
+		queue.item_taken_from_queue()
 		var stained_lines: Array[int] = add_item_to_lookup(item)
 		#print(stained_lines)
 		var completed_lines: Array[int] = get_completed_lines(stained_lines)

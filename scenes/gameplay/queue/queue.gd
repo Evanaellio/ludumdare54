@@ -23,7 +23,7 @@ func _on_item_picked_up(slot_node: Node2D):
 	active_slot.item = pack
 	item_picked_up.emit(selected_item)
 
-func item_placed_backpack():
+func item_taken_from_queue():
 	deactivateSlot(false)
 	var slots = $Items.get_children()
 	for i in slots.size() - 1:
