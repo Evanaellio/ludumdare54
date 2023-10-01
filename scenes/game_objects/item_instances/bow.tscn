@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dojv5nbouq7c7"]
+[gd_scene load_steps=5 format=3 uid="uid://dojv5nbouq7c7"]
 
 [ext_resource type="PackedScene" uid="uid://btmbhhii75uyt" path="res://scenes/game_objects/item/item.tscn" id="1_df5t6"]
+[ext_resource type="AudioStream" uid="uid://bndxe067s41nd" path="res://assets/sfx/light.wav" id="2_34r1k"]
 [ext_resource type="Texture2D" uid="uid://ckcb4r0gir5ft" path="res://assets/sprites/items/bow.png" id="3_r4ktc"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_null6"]
+streams_count = 1
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("2_34r1k")
+stream_0/weight = 1.0
 
 [node name="Bow" type="Node2D"]
 
@@ -15,6 +22,9 @@ layer_0/tile_data = PackedInt32Array(0, 0, 65536, -65536, 0, 65536, -131072, 0, 
 
 [node name="HaloMap" parent="Item" index="1"]
 layer_0/tile_data = PackedInt32Array(262142, 327681, 0, 196606, 262145, 0, 196607, 458753, 0, 262143, 393217, 0, 65536, 327681, 0, 0, 131073, 0, 1, 196609, 0, 65537, 393217, 0, -65536, 131073, 0, -131072, 131073, 0, -131071, 196609, 0, -65535, 196609, 0, -196608, 131073, 0, -262144, 262145, 0, -262143, 458753, 0, -196607, 196609, 0, -262146, 327681, 0, -327682, 262145, 0, -327681, 458753, 0, -262145, 393217, 0)
+
+[node name="pickupSfx" parent="Item" index="2"]
+stream = SubResource("AudioStreamRandomizer_null6")
 
 [node name="Bow" type="Sprite2D" parent="Item"]
 position = Vector2(1, -31)

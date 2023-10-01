@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3yyr1r2u8day"]
+[gd_scene load_steps=5 format=3 uid="uid://c3yyr1r2u8day"]
 
 [ext_resource type="PackedScene" uid="uid://btmbhhii75uyt" path="res://scenes/game_objects/item/item.tscn" id="1_vlldi"]
+[ext_resource type="AudioStream" uid="uid://bndxe067s41nd" path="res://assets/sfx/light.wav" id="2_5jr6s"]
 [ext_resource type="Texture2D" uid="uid://bxhrrpi4laaq2" path="res://assets/sprites/items/arrow.png" id="3_jc5sa"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7eebn"]
+streams_count = 1
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("2_5jr6s")
+stream_0/weight = 1.0
 
 [node name="Arrow" type="Node2D"]
 
@@ -14,6 +21,9 @@ layer_0/tile_data = PackedInt32Array(0, 0, 65536, -65536, 0, 65536, -131072, 0, 
 
 [node name="HaloMap" parent="Item" index="1"]
 layer_0/tile_data = PackedInt32Array(-262144, 262145, 0, -262143, 458753, 0, -196607, 196609, 0, -196608, 131073, 0, -131072, 131073, 0, -65536, 131073, 0, -65535, 196609, 0, -131071, 196609, 0, 0, 131073, 0, 1, 196609, 0, 65536, 327681, 0, 65537, 393217, 0)
+
+[node name="pickupSfx" parent="Item" index="2"]
+stream = SubResource("AudioStreamRandomizer_7eebn")
 
 [node name="Arrow" type="Sprite2D" parent="Item"]
 position = Vector2(31, -35)

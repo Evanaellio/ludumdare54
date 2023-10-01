@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://be8fhmygmqnin"]
+[gd_scene load_steps=5 format=3 uid="uid://be8fhmygmqnin"]
 
 [ext_resource type="PackedScene" uid="uid://btmbhhii75uyt" path="res://scenes/game_objects/item/item.tscn" id="1_63t76"]
+[ext_resource type="AudioStream" uid="uid://2c8abcheik2" path="res://assets/sfx/mid.wav" id="2_3ttyj"]
 [ext_resource type="Texture2D" uid="uid://dokhq8y0b011l" path="res://assets/sprites/items/boomerang.png" id="2_54jkk"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wluor"]
+streams_count = 1
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("2_3ttyj")
+stream_0/weight = 1.0
 
 [node name="Boomerang" type="Node2D"]
 
@@ -14,6 +21,9 @@ layer_0/tile_data = PackedInt32Array(-2, 0, 65536, -1, 0, 65536, -65536, 0, 6553
 
 [node name="HaloMap" parent="Item" index="1"]
 layer_0/tile_data = PackedInt32Array(131072, 131073, 0, 196608, 327681, 0, 196609, 393217, 0, 131073, 196609, 0, 65536, 131073, 0, 65537, 196609, 0, 1, 196609, 0, 0, 131073, 0, -65536, 1179649, 0, -131072, 1, 0, -131071, 458753, 0, -65535, 196609, 0, -65537, 1, 0, -65538, 1, 0, -65539, 1, 0, -65540, 262145, 0, -4, 327681, 0, -3, 65537, 0, -2, 65537, 0, -1, 65537, 0)
+
+[node name="pickupSfx" parent="Item" index="2"]
+stream = SubResource("AudioStreamRandomizer_wluor")
 
 [node name="Boomerang" type="Sprite2D" parent="Item"]
 position = Vector2(-32, 32)

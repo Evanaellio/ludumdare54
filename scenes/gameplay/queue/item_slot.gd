@@ -23,6 +23,7 @@ func selectItem():
 	if item_ptr != null and noItemSelected():
 		selected = true
 		$Sprite.modulate = "#bea5eb"
+		item_ptr.get_node("Item").noise()
 		item_picked_up.emit(self)
 
 func item_placed_back():

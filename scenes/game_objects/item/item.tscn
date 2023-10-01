@@ -16,3 +16,6 @@ format = 2
 unique_name_in_owner = true
 tile_set = ExtResource("3_twqqh")
 format = 2
+
+[node name="pickupSfx" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0

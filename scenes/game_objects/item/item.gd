@@ -29,6 +29,7 @@ func display_preview():
 		check_occupied() # will update preview when we move to a new location
 
 func on_click():
+	noise()
 	if is_electable_for_upgrade:
 		incr_rarity()
 		backpack.removed_not_selected_upgrade(self)
@@ -75,6 +76,7 @@ func place_in_backpack() -> bool:
 			tiles_occupied_by_me.append(map_coords)
 		enable_collisions()
 		clear_preview()
+		noise()
 		return true
 	else:
 		return false
@@ -90,6 +92,8 @@ func enable_collisions():
 func clear_preview():
 	preview_tilemap.clear()
 
+func noise():
+	$pickupSfx.play()
 
 # ooooooooo.         .o.       ooooooooo.   ooooo ooooooooooooo oooooo   oooo 
 # `888   `Y88.      .888.      `888   `Y88. `888' 8'   888   `8  `888.   .8'  
