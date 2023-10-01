@@ -8,6 +8,8 @@ extends Node2D
 @onready var preview_tilemap : TileMap = $"/root/Gameplay/Backpack/PreviewTileMap"
 @onready var selection_manager = $"/root/SelectionManager"
 
+var is_electable_for_upgrade : bool = false
+
 var tile_nodes : Array[Node2D] = []
 var tiles_occupied_by_me : Array[Vector2i] = []
 
@@ -26,7 +28,12 @@ func display_preview():
 		check_occupied() # will update preview when we move to a new location
 
 func on_click():
-	selection_manager.selectItem(self)
+	if is_electable_for_upgrade:
+		print("item.gd: TODO UPGRADE")
+		backpack.removed_not_selected_upgrade(self)
+		is_electable_for_upgrade = false
+	else:
+		selection_manager.selectItem(self)
 
 func tile_ready(tile):
 	tile.get_node("Area2D").input_pickable = false

@@ -8,8 +8,11 @@ extends Node2D
 const HEIGHT: int = 10
 const WIDTH: int = 12
 
-var clicking = false
+var clicking : bool = false
 var item_lookup: Array[Node2D] = []
+
+var waiting_upgrade_selected : bool = false
+var upgradable_items : Array[Node2D] = []
 
 func get_map_coords_for_node(node: Node2D) -> Vector2i:
 		var local_coords = occupied_tilemap.to_local(node.global_position)
@@ -77,6 +80,14 @@ func get_items_from_completed_lines(completed_lines: Array[int]) -> Array[Node2D
 	
 	return items
 
+func removed_not_selected_upgrade(selected: Node2D) -> void:
+	for i in upgradable_items:
+		if i != selected:
+			i.clear_previously_occupied_by_me()
+			i.queue_free()
+	upgradable_items = []
+	waiting_upgrade_selected = false
+
 func snap_item_to_grid(item: Node2D) -> void:
 	var item_tile = item.tile_nodes[0]
 	var tile_coords = occupied_tilemap.to_local(item_tile.global_position)
@@ -94,7 +105,11 @@ func placeItem(item: Node2D) -> bool:
 		var completed_lines: Array[int] = get_completed_lines(stained_lines)
 		#print(completed_lines)
 		if !completed_lines.is_empty():
-			print(get_items_from_completed_lines(completed_lines))
+			upgradable_items = get_items_from_completed_lines(completed_lines)
+			print(upgradable_items)
+			waiting_upgrade_selected = true
+			for i in upgradable_items:
+				i.is_electable_for_upgrade = true
 		
 		return true
 	else:
