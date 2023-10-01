@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://be8fhmygmqnin"]
+[gd_scene load_steps=2 format=3 uid="uid://be8fhmygmqnin"]
 
 [ext_resource type="PackedScene" uid="uid://btmbhhii75uyt" path="res://scenes/game_objects/item/item.tscn" id="1_63t76"]
-[ext_resource type="TileSet" uid="uid://cm070lr0xrfe6" path="res://assets/sprites/item_halo/halo_tileset.tres" id="2_0jgyv"]
 
 [node name="Boomerang" type="Node2D"]
 
@@ -12,10 +11,7 @@ item_type = "Boomerang"
 [node name="TileMap" parent="Item" index="0"]
 layer_0/tile_data = PackedInt32Array(-2, 0, 65536, -1, 0, 65536, -65536, 0, 65536, 0, 0, 65536, 65536, 0, 65536)
 
-[node name="HaloMap" type="TileMap" parent="Item"]
-modulate = Color(1, 1, 1, 0.509804)
-tile_set = ExtResource("2_0jgyv")
-format = 2
-layer_0/tile_data = PackedInt32Array(-65540, 262145, 0, -65539, 1, 0, -65538, 1, 0, -65537, 1, 0, -131072, 1, 0, -131071, 458753, 0, -65535, 196609, 0, -65536, 1179649, 0, -1, 65537, 0, -2, 65537, 0, -3, 65537, 0, -4, 327681, 0, 1, 196609, 0, 65537, 196609, 0, 131073, 196609, 0, 196609, 393217, 0, 196608, 327681, 0, 131072, 131073, 0, 65536, 131073, 0, 0, 131073, 0)
+[node name="HaloMap" parent="Item" index="1"]
+layer_0/tile_data = PackedInt32Array(131072, 131073, 0, 196608, 327681, 0, 196609, 393217, 0, 131073, 196609, 0, 65536, 131073, 0, 65537, 196609, 0, 1, 196609, 0, 0, 131073, 0, -65536, 1179649, 0, -131072, 1, 0, -131071, 458753, 0, -65535, 196609, 0, -65537, 1, 0, -65538, 1, 0, -65539, 1, 0, -65540, 262145, 0, -4, 327681, 0, -3, 65537, 0, -2, 65537, 0, -1, 65537, 0)
 
 [editable path="Item"]
