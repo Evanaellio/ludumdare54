@@ -15,7 +15,8 @@ layer_0/tile_data = PackedInt32Array(-2, 0, 65536, -1, 0, 65536, -65536, 0, 6553
 [node name="HaloMap" parent="Item" index="1"]
 layer_0/tile_data = PackedInt32Array(131072, 131073, 0, 196608, 327681, 0, 196609, 393217, 0, 131073, 196609, 0, 65536, 131073, 0, 65537, 196609, 0, 1, 196609, 0, 0, 131073, 0, -65536, 1179649, 0, -131072, 1, 0, -131071, 458753, 0, -65535, 196609, 0, -65537, 1, 0, -65538, 1, 0, -65539, 1, 0, -65540, 262145, 0, -4, 327681, 0, -3, 65537, 0, -2, 65537, 0, -1, 65537, 0)
 
-[node name="Boomerang" type="Sprite2D" parent="."]
+[node name="Boomerang" type="Sprite2D" parent="Item"]
+position = Vector2(-32, 32)
 scale = Vector2(2, 2)
 texture = ExtResource("2_54jkk")
 
