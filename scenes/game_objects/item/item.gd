@@ -7,7 +7,7 @@ extends Node2D
 @onready var occupied_tilemap : TileMap = $"/root/Gameplay/Backpack/OccupiedTileMap"
 @onready var preview_tilemap : TileMap = $"/root/Gameplay/Backpack/PreviewTileMap"
 @onready var selection_manager = $"/root/SelectionManager"
-@onready var halo_map = $"HaloMap"
+@onready var halo_map = %HaloMap
 
 var is_electable_for_upgrade : bool = false
 
@@ -30,7 +30,7 @@ func display_preview():
 
 func on_click():
 	if is_electable_for_upgrade:
-		print("item.gd: TODO UPGRADE")
+		incr_rarity()
 		backpack.removed_not_selected_upgrade(self)
 		is_electable_for_upgrade = false
 	else:
@@ -121,7 +121,7 @@ func set_rarity(new_rarity: int):
 		set_color(new_color)
 
 func set_color(color : Color):
-	halo_map.self_modulate = color
+	halo_map.modulate = color
 
 ## rarity can only increase
 func incr_rarity() -> void:

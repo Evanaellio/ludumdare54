@@ -63,8 +63,15 @@ func get_completed_lines(stained_lines: Array[int]) -> Array[int]:
 	var completed_lines: Array[int] = []
 	for l in stained_lines:
 		var complete_line: bool = true
+		var line_rarity: int = -1
 		for c in range(0, WIDTH):
-			if get_item_lookup_at(Vector2i(c, l)) == null:
+			var item_found = get_item_lookup_at(Vector2i(c, l))
+			if item_found == null:
+				complete_line = false
+				break
+			elif line_rarity == -1:
+				line_rarity = item_found.rarity
+			elif line_rarity != item_found.rarity:
 				complete_line = false
 				break
 		if complete_line:
