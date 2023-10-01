@@ -45,9 +45,6 @@ func dropItem(target):
 		if target.placeItem(selectedItem):
 			selectedItem = null
 
-func getSelectedItem():
-	return selectedItem
-
 func snapItemToCursor():
 	var mousePosition = get_viewport().get_mouse_position()
 	selectedItem.global_position = mousePosition
