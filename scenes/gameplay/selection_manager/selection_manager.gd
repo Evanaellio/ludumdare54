@@ -48,6 +48,7 @@ func selectItem(item: Node2D):
 		frameProcessed = true
 		selectedItem = item
 		selectedItem.disable_collisions()
+		selectedItem.z_index = 999
 		snap_item_to_cursor()
 		item.clear_previously_occupied_by_me()
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -59,6 +60,7 @@ func dropItem(target):
 		# Bon ça va laisser l'item là comme une merde, mais bon
 		frameProcessed = true
 		if target.placeItem(selectedItem):
+			selectedItem.z_index = 10
 			selectedItem = null
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
