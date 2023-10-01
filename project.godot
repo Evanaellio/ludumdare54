@@ -25,6 +25,7 @@ Transitions="*res://addons/game-template/transition/transition.tscn"
 Game="*res://addons/game-template/game.gd"
 DebugShortcuts="*res://addons/ggt-debug-shortcuts/autoload/debug_shortcuts.tscn"
 SelectionManager="*res://scenes/gameplay/selection_manager/selection_manager.tscn"
+RngUtils="*res://addons/rng_utils/rng_utils.gd"
 
 [category]
 
