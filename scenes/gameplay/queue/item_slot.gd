@@ -11,6 +11,12 @@ extends Node2D
 	get:
 		return item_pack
 
+var rarity: int:
+	set(value):
+		item_ptr.get_node("Item").set_rarity(value)
+	get:
+		return item_ptr.get_node("Item").rarity
+
 var item_pack = null
 var item_ptr: Node2D = null
 var placeholder_item: Node2D = null

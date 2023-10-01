@@ -18,6 +18,7 @@ extends Node2D
 @onready var next_quest_timer: Timer = $NextQuestTimer
 
 @onready var ItemsPacks = get_node("/root/SelectionManager").ItemsPacks
+@onready var Queue = get_node("/root/Gameplay/Queue")
 
 signal found_loot
 
@@ -49,6 +50,9 @@ func _process(delta):
 	if state == States.WALK:
 		background.get_node("ParallaxBackground").scroll_offset += Vector2(-delta * 8, 0)
 	
+	var rar = Queue.rarity_mult * Queue.temp_rarity_mult
+	loot_progress.get_node("Rarity").text = "Rarity: " + str(rar) + "X"
+
 # Start timer to next loot, timer can be paused during fights
 func next_loot():
 	var wait_length = 5 + randi_range(-2, 3)
@@ -77,14 +81,16 @@ func _on_fight_timer_timeout():
 	next_fight()
 
 # When NPC receives requested item
-func boost():
-	var boost_length = 15
+func boost(level: int):
+	var boost_length = 20
 	boost_timer.start(boost_length)
 	boosted = true
+	Queue.temp_rarity_mult = level
 	boost_remaining.show()
 
 func _on_boost_timer_timeout():
 	boosted = false
+	Queue.temp_rarity_mult = 1
 	boost_remaining.hide()
 	next_quest()
 
@@ -143,7 +149,7 @@ func _on_deposit_area_input_event(_viewport, event, _shape_idx):
 					if get_node("/root/SelectionManager").selectedItemSource != null:
 						# if item taken directly from queue, release queue slot
 						get_node("/root/Gameplay/Queue").item_taken_from_queue()
-					boost()
+					boost(selected.rarity + 2)
 					cancel_quest()
 				else:
 					print("wrong item : got " + nodeName + " expected " + requestItemType)

@@ -4,6 +4,18 @@ signal item_picked_up
 
 @onready var ItemsPacks = get_node("/root/SelectionManager").ItemsPacks
 
+# starting at : 1 out of X 
+# then : rarity_mult out of X
+const RARITY_CHANCES = [ 
+	1,   # common
+	10,
+	25,
+	50,
+	100  # rare
+]
+var rarity_mult = 1 # increase with time
+var temp_rarity_mult = 1 # increase with boost
+
 var active_slot: Node2D = null
 var selected_oite
 
@@ -19,8 +31,10 @@ func _process(delta):
 func _on_item_picked_up(slot_node: Node2D):
 	active_slot = slot_node
 	var selected_item = slot_node.item_ptr
+	var rarity = slot_node.rarity
 	var pack = slot_node.item_pack
 	active_slot.item = pack
+	active_slot.rarity = rarity
 	item_picked_up.emit(selected_item)
 
 func item_taken_from_queue():
@@ -29,6 +43,7 @@ func item_taken_from_queue():
 	for i in slots.size() - 1:
 		if slots[i].item == null and not slots[i + 1].item == null:
 			slots[i].item = slots[i+1].item
+			slots[i].rarity = slots[i+1].rarity
 			slots[i+1].item = null
 
 func unselectItem(item: Node2D):
@@ -43,20 +58,28 @@ func deactivateSlot(revert: bool):
 			active_slot.item_dropped()
 		active_slot = null
 
-func add_to_queue(item_name: String):
+func add_to_queue(item_name: String, rarity: int):
 	var slot = _first_free()
 	if slot != null:
 		var pack = ItemsPacks.get(item_name, null)
 		slot.item = pack
+		slot.rarity = rarity
 	else:
 		print("queue is full!")
 
 func add_random_to_queue():
 	var n = ItemsPacks.keys()[randi() % ItemsPacks.keys().size()]
-	add_to_queue(n)
+	add_to_queue(n, _rand_rarity(rarity_mult * temp_rarity_mult))
 
 func has_space() -> bool:
 	return _first_free() != null
+
+func _rand_rarity(mutl: int):
+	var max = RARITY_CHANCES.size() - 1
+	for i in max:
+		if randi_range(1, RARITY_CHANCES[max-i]) <= mutl:
+			return max-i
+	return 0
 
 func _first_free() -> Node2D:
 	if $Items/slot1.item == null:

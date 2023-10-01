@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bhaya5sk8xnk"]
+[gd_scene load_steps=15 format=3 uid="uid://bhaya5sk8xnk"]
 
 [ext_resource type="FontFile" uid="uid://cawekr44fruhm" path="res://assets/fonts/open-sans/open-sans-regular.ttf" id="1_4w4tg"]
 [ext_resource type="Script" path="res://scenes/gameplay/fightzone/fightzone.gd" id="1_edjpk"]
@@ -18,6 +18,9 @@ cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
+[sub_resource type="LabelSettings" id="LabelSettings_xyaqt"]
+shadow_color = Color(0, 0, 0, 0.384314)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5s8u0"]
 bg_color = Color(0.341176, 0, 0, 0.388235)
 corner_radius_top_left = 8
@@ -35,6 +38,12 @@ corner_radius_bottom_left = 8
 [sub_resource type="Theme" id="Theme_pe74f"]
 ProgressBar/styles/background = SubResource("StyleBoxFlat_5s8u0")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_yrjmx")
+
+[sub_resource type="LabelSettings" id="LabelSettings_feklr"]
+shadow_color = Color(0.0470588, 0.0470588, 0.0470588, 0.580392)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ki0e0"]
+shadow_color = Color(0.137255, 0.137255, 0.137255, 0.933333)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ncbxw"]
 shader = ExtResource("4_h5f0o")
@@ -99,7 +108,8 @@ layout_mode = 0
 offset_left = 12.0
 offset_right = 80.0
 offset_bottom = 26.0
-text = "boosted!"
+text = "Rarity BOOST"
+label_settings = SubResource("LabelSettings_xyaqt")
 
 [node name="QueryProgressBar" type="ProgressBar" parent="GUI"]
 layout_mode = 1
@@ -127,7 +137,8 @@ offset_left = 48.0
 offset_top = -3.0
 offset_right = 116.0
 offset_bottom = 23.0
-text = "help me!"
+text = "Help ME!"
+label_settings = SubResource("LabelSettings_xyaqt")
 
 [node name="LootProgressBar" type="ProgressBar" parent="GUI"]
 layout_mode = 1
@@ -154,7 +165,17 @@ offset_left = 11.0
 offset_top = 1.0
 offset_right = 85.0
 offset_bottom = 27.0
-text = "next item"
+text = "Looting"
+label_settings = SubResource("LabelSettings_feklr")
+
+[node name="Rarity" type="Label" parent="GUI/LootProgressBar"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 33.0
+offset_right = 85.0
+offset_bottom = 59.0
+text = "Rarity : 1X"
+label_settings = SubResource("LabelSettings_ki0e0")
 
 [node name="Fight" type="Control" parent="GUI"]
 anchors_preset = 0
