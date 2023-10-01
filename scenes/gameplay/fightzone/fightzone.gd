@@ -43,6 +43,8 @@ func _ready():
 	next_quest()
 	# boost()
 
+	$GUI/AnimationPlayer.play("npc")
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	boost_remaining.value = boost_timer.time_left / boost_timer.wait_time
@@ -75,11 +77,13 @@ func _on_next_fight_timer_timeout():
 	loot_timer.paused = true
 	var fight_length = 3 + randi_range(-1, 2)
 	fight_timer.start(fight_length)
+	$GUI/AnimationPlayer.play("attac")
 
 func _on_fight_timer_timeout():
 	state = States.WALK
 	fight_gui.hide()
 	loot_timer.paused = false
+	$GUI/AnimationPlayer.play("npc")
 	next_fight()
 
 # When NPC receives requested item
