@@ -17,6 +17,8 @@ extends Node2D
 @onready var quest_timer: Timer = $QuestTimer
 @onready var next_quest_timer: Timer = $NextQuestTimer
 
+@onready var score_gui: Control = $"/root/Gameplay/ScoreGUI"
+
 @onready var ItemsPacks = get_node("/root/SelectionManager").ItemsPacks
 @onready var Queue = get_node("/root/Gameplay/Queue")
 
@@ -145,6 +147,11 @@ func _on_deposit_area_input_event(_viewport, event, _shape_idx):
 				var nodeName = selected.item_type
 				if requestItemType == nodeName:
 					print("correct item " + nodeName)
+					var score = selected.get_score()
+					print(selected.rarity)
+					print(selected.base_score)
+					print(score)
+					score_gui.incr_score(score)
 					get_node("/root/SelectionManager").destroyItem()
 					if get_node("/root/SelectionManager").selectedItemSource != null:
 						# if item taken directly from queue, release queue slot
