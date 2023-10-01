@@ -8,6 +8,7 @@ var ItemsPacks = {
 	"bow":       preload("res://scenes/game_objects/item_instances/bow.tscn"),
 	"hatchet":   preload("res://scenes/game_objects/item_instances/hatchet.tscn"),
 	"key":       preload("res://scenes/game_objects/item_instances/key.tscn"),
+	"magic_potion": preload("res://scenes/game_objects/item_instances/magic_potion.tscn"),
 	"morning_jj":preload("res://scenes/game_objects/item_instances/morning_jj.tscn"),
 	"potion":    preload("res://scenes/game_objects/item_instances/potion.tscn"),
 	"sword":     preload("res://scenes/game_objects/item_instances/sword.tscn"),
@@ -34,14 +35,14 @@ func _input(event: InputEvent):
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_A:
 			if not selectedItem == null:
-				selectedItem.rotate(PI / 2)
+				selectedItem.custom_rotate(PI / 2)
 				frameProcessed = true
 	if event is InputEventMouseButton && selectedItem != null:
 		if event.button_index == 4:
-			selectedItem.rotate(PI / 2)
+			selectedItem.custom_rotate(PI / 2)
 			frameProcessed = true
 		if event.button_index == 5:
-			selectedItem.rotate(-PI / 2)
+			selectedItem.custom_rotate(-PI / 2)
 			frameProcessed = true
 		if event.button_index == 2 && not event.pressed && not selectedItemSource == null:
 			selectedItemSource.unselectItem(selectedItem)

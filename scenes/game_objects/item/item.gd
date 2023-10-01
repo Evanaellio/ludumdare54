@@ -115,6 +115,12 @@ func enable_collisions():
 func clear_preview():
 	preview_tilemap.clear()
 
+func custom_rotate(radians: float) -> void:
+	self.rotate(radians)
+	if item_type == "MagicPotion":
+		var liquid: Sprite2D = $"./Liquid"
+		liquid.rotate(-radians)
+
 func noise():
 	$pickupSfx.play()
 
