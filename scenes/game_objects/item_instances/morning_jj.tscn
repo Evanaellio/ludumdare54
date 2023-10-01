@@ -6,7 +6,7 @@
 [node name="MorningJJ" type="Node2D"]
 
 [node name="Item" parent="." instance=ExtResource("1_fdhxl")]
-position = Vector2(-32, 32)
+position = Vector2(32, -64)
 
 [node name="TileMap" parent="Item" index="0"]
 layer_0/tile_data = PackedInt32Array(-1, 0, 65536, -65536, 0, 65536, 131071, 0, 65536, 196607, 0, 65536, 0, 0, 65536, -2, 0, 65536, 131070, 0, 65536, 196606, 0, 65536)

@@ -7,7 +7,8 @@
 [node name="Bow" type="Node2D"]
 
 [node name="Item" parent="." instance=ExtResource("1_df5t6")]
-position = Vector2(0, 32)
+position = Vector2(-32, 0)
+rotation = 1.57079
 
 [node name="TileMap" parent="Item" index="0"]
 layer_0/tile_data = PackedInt32Array(0, 0, 65536, -65536, 0, 65536, -131072, 0, 65536, 131071, 0, 65536, -131073, 0, 65536)
@@ -20,7 +21,7 @@ layer_0/tile_data = PackedInt32Array(196606, 262145, 0, 262142, 327681, 0, 26214
 
 [node name="Bow" type="Sprite2D" parent="Item"]
 position = Vector2(1, -31)
-rotation = -1.57079
+rotation = -1.5708
 scale = Vector2(2, 2)
 texture = ExtResource("3_r4ktc")
 
