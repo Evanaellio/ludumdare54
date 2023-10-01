@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var occupied_tilemap : TileMap = $"/root/Gameplay/Backpack/OccupiedTileMap"
 @onready var preview_tilemap : TileMap = $"/root/Gameplay/Backpack/PreviewTileMap"
+@onready var selection_manager = $"/root/SelectionManager"
 var tile_nodes : Array[Node2D] = []
 
 var tiles_occupied_by_me : Array[Vector2i] = []
@@ -14,16 +15,14 @@ const PREVIEW_RED = Vector2i(1, 0)
 
 var last_preview_coord : Vector2i = Vector2i(-1, -1)
 
-func _process(delta):
-	if tile_nodes.size():
-		var new_preview_coord = get_map_coords_for_tile_node(tile_nodes[0])
-		if new_preview_coord != last_preview_coord:
-			last_preview_coord = new_preview_coord
-			check_occupied() # will update preview when we move to a new location
+func display_preview():
+	var new_preview_coord = get_map_coords_for_tile_node(tile_nodes[0])
+	if new_preview_coord != last_preview_coord:
+		last_preview_coord = new_preview_coord
+		check_occupied() # will update preview when we move to a new location
 
 func on_click():
-	# Might need a global (autloaded) singleton to do that and make sure only one item is selected at once
-	get_node("/root/SelectionManager").selectItem(self)
+	selection_manager.selectItem(self)
 	disable_collisions()
 	check_occupied()
 
