@@ -91,6 +91,7 @@ func get_items_from_completed_lines(completed_lines: Array[int]) -> Array[Node2D
 	return items
 
 func removed_not_selected_upgrade(selected: Node2D) -> void:
+	%UpgradeSfx.play()
 	for i in upgradable_items:
 		if i != selected:
 			i.animate_upgrade_component(selected.global_position)
