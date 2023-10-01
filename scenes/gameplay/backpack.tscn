@@ -23,11 +23,9 @@ polygon = PackedVector2Array(-223, -152, 417, -152, 417, 296, -223, 296)
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 texture_repeat = 2
 position = Vector2(384, 321)
-scale = Vector2(2, 2)
 texture = ExtResource("3_8i1kn")
-offset = Vector2(0, 0.5)
 region_enabled = true
-region_rect = Rect2(0, 0, 384, 320)
+region_rect = Rect2(0, 0, 768, 640)
 
 [node name="OccupiedTileMap" type="TileMap" parent="."]
 unique_name_in_owner = true

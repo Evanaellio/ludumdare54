@@ -22,8 +22,9 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 func _process(delta):
-	frameProcessed = false
-	if selectedItem:
+	frameProcessed = false;
+	if not selectedItem == null:
+
 		snap_item_to_cursor()
 		selectedItem.display_preview()
 
@@ -45,31 +46,38 @@ func _input(event: InputEvent):
 		if event.button_index == 2 && not event.pressed && not selectedItemSource == null:
 			selectedItemSource.unselectItem(selectedItem)
 
-func selectItem(item: Node2D, source: Node2D) -> bool:
+
+func selectItem(item: Node2D, source: Node2D, snapCursor: bool = false):
 	if (not frameProcessed) and selectedItem == null and not locked:
-		print("selecting item")
-		frameProcessed = true
 		selectedItemSource = source
 		selectedItem = item
 		selectedItem.disable_collisions()
 		selectedItem.z_index = 999
-		snap_item_to_cursor()
 		item.clear_previously_occupied_by_me()
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
+		if snapCursor:
+			snap_cursor_to_item()
+		frameProcessed = true
 		return true
 	return false
-		
+
+func forceSelectItem(item: Node2D, source: Node2D):
+	if not locked:
+		selectedItem = null
+		frameProcessed = false
+		selectItem(item, source, true)
+
 
 func dropItem(target):
 	if (not frameProcessed) and not selectedItem == null:
-		print("droping item")
-		# La on demande à l'autre tanche de faire sa vérif - si oui, on balance
-		# Bon ça va laisser l'item là comme une merde, mais bon
-		frameProcessed = true
-		if target.placeItem(selectedItem):
+		if target.canItemBePlaced(selectedItem):
 			selectedItem.z_index = 10
-			selectedItem = null
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			var newSelectedItem = target.placeItem(selectedItem)
+			if newSelectedItem == null:
+				selectedItem = null
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			frameProcessed = true
 
 func destroyItem():
 	if (not frameProcessed) and not selectedItem == null:
@@ -79,7 +87,14 @@ func destroyItem():
 		selectedItem.queue_free()
 		selectedItem = null
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-
+		
 func snap_item_to_cursor():
+	if selectedItem == null:
+		return
 	var mousePosition = get_viewport().get_mouse_position()
 	selectedItem.global_position = mousePosition
+
+func snap_cursor_to_item():
+	if selectedItem == null:
+		return
+	get_viewport().warp_mouse(selectedItem.global_position)

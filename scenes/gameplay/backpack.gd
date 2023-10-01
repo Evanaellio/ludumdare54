@@ -107,22 +107,23 @@ func snap_item_to_grid(item: Node2D) -> void:
 	
 	item.global_translate(backpack_coords_global - item_tile.global_position)
 
-func placeItem(item: Node2D) -> bool:
-	if item.place_in_backpack():
-		snap_item_to_grid(item)
-		queue.item_taken_from_queue()
-		var stained_lines: Array[int] = add_item_to_lookup(item)
-		#print(stained_lines)
-		var completed_lines: Array[int] = get_completed_lines(stained_lines)
-		#print(completed_lines)
-		if !completed_lines.is_empty():
-			upgradable_items = get_items_from_completed_lines(completed_lines)
-			print(upgradable_items)
-			waiting_upgrade_selected = true
-			for i in upgradable_items:
-				i.is_electable_for_upgrade = true
-				i.animate_upgrade()
-				selection_manager.locked = true
-		return true
-	else:
-		return false
+func canItemBePlaced(item: Node2D) -> bool:
+	return not item.check_occupied()
+
+func placeItem(item: Node2D) -> Node2D:
+	var swappedItem =  item.place_in_backpack()
+	snap_item_to_grid(item)
+	queue.item_taken_from_queue()
+	var stained_lines: Array[int] = add_item_to_lookup(item)
+	#print(stained_lines)
+	var completed_lines: Array[int] = get_completed_lines(stained_lines)
+	#print(completed_lines)
+	if !completed_lines.is_empty():
+		upgradable_items = get_items_from_completed_lines(completed_lines)
+		print(upgradable_items)
+		waiting_upgrade_selected = true
+		for i in upgradable_items:
+			i.is_electable_for_upgrade = true
+			i.animate_upgrade()
+			selection_manager.locked = true
+	return swappedItem

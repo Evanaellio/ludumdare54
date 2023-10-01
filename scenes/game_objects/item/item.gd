@@ -37,7 +37,7 @@ func on_click():
 		selection_manager.locked = false
 		tween_upgrade.kill()
 	else:
-		selection_manager.selectItem(self, null)
+		selection_manager.selectItem(self, null, true)
 
 func tile_ready(tile):
 	tile.get_node("Area2D").input_pickable = false
@@ -48,28 +48,51 @@ func get_map_coords_for_tile_node(tile_node) -> Vector2i:
 		var map_coords = occupied_tilemap.local_to_map(local_coords)
 		return map_coords
 
+# Handles preview
 func check_occupied() -> bool:
 	clear_preview()
-	var occupied = false
+	var conflicts: Array[Node2D] = []
+	var outOfBounds: bool = false
 	for tile_node in tile_nodes:
 		var map_coords = get_map_coords_for_tile_node(tile_node)
 		var status = occupied_tilemap.get_cell_atlas_coords(0, map_coords)
 		if status == OCCUPIED:
-			occupied = true
 			if backpack.is_in_map_bounds(map_coords):
 				preview_tilemap.set_cell(0, map_coords, 0, PREVIEW_RED)
+				var item = backpack.get_item_lookup_at(map_coords)
+				if not item in conflicts:
+					conflicts.push_front(item)
+			else: 
+				outOfBounds = true
 		elif backpack.is_in_map_bounds(map_coords):
 			preview_tilemap.set_cell(0, map_coords, 0, PREVIEW_GREEN)
-	return occupied
-	
+	return outOfBounds || conflicts.size() > 1
+
+func get_conflicts() -> Array[Node2D]:
+	var conflicts: Array[Node2D] = []
+	for tile_node in tile_nodes:
+		var map_coords = get_map_coords_for_tile_node(tile_node)
+		var status = occupied_tilemap.get_cell_atlas_coords(0, map_coords)
+		if status == OCCUPIED:
+			if backpack.is_in_map_bounds(map_coords):
+				var item = backpack.get_item_lookup_at(map_coords)
+				if not item in conflicts:
+					conflicts.push_front(item)
+	return conflicts
+
 func clear_previously_occupied_by_me():
 	for mine in tiles_occupied_by_me:
 		occupied_tilemap.set_cell(0, mine, 0, EMPTY)
 		backpack.set_item_lookup_at(null, tiles_occupied_by_me)
 		tiles_occupied_by_me = []
 
-func place_in_backpack() -> bool:
-	if not check_occupied():
+func place_in_backpack() -> Node2D:
+	var conflicts = get_conflicts()
+	if conflicts.size() < 2:
+		var swappedItem: Node2D = null
+		if conflicts.size() == 1:
+			swappedItem = conflicts[0]
+			get_node("/root/SelectionManager").forceSelectItem(swappedItem, null)
 		for tile_node in tile_nodes:
 			var map_coords = get_map_coords_for_tile_node(tile_node)
 			occupied_tilemap.set_cell(0, map_coords, 0, OCCUPIED)
@@ -77,9 +100,9 @@ func place_in_backpack() -> bool:
 		enable_collisions()
 		clear_preview()
 		noise()
-		return true
+		return swappedItem
 	else:
-		return false
+		return null
 
 func disable_collisions():
 	for tile_node in tile_nodes:
