@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6qi6vtxse0mx"]
+[gd_scene load_steps=3 format=3 uid="uid://b6qi6vtxse0mx"]
 
 [ext_resource type="PackedScene" uid="uid://btmbhhii75uyt" path="res://scenes/game_objects/item/item.tscn" id="1_moopu"]
+[ext_resource type="Texture2D" uid="uid://b3lbc4ekrsf5y" path="res://assets/sprites/items/key.png" id="2_pg2yn"]
 
 [node name="Key" type="Node2D"]
 
@@ -9,9 +10,14 @@ position = Vector2(32, -32)
 item_type = "Key"
 
 [node name="TileMap" parent="Item" index="0"]
-layer_0/tile_data = PackedInt32Array(65534, 0, 65536, 65535, 0, 65536, 0, 0, 65536, -65536, 0, 65536)
+layer_0/tile_data = PackedInt32Array(65534, 0, 65536, 65535, 0, 65536, 0, 0, 65536, 65536, 0, 65536)
 
 [node name="HaloMap" parent="Item" index="1"]
-layer_0/tile_data = PackedInt32Array(-131072, 262145, 0, -131071, 458753, 0, -65535, 196609, 0, -65536, 131073, 0, 0, 1048577, 0, 1, 196609, 0, 65537, 393217, 0, 65536, 65537, 0, 131071, 65537, 0, 65535, 1, 0, 65534, 1, 0, 131070, 65537, 0, 131069, 65537, 0, 65533, 1, 0, 65532, 262145, 0, 131068, 327681, 0)
+layer_0/tile_data = PackedInt32Array(0, 1, 0, 1, 458753, 0, 65537, 196609, 0, 65536, 1179649, 0, 131071, 65537, 0, 65535, 1, 0, 65534, 1, 0, 131070, 65537, 0, 131069, 65537, 0, 65533, 1, 0, 65532, 262145, 0, 131068, 327681, 0, 131072, 131073, 0, 196608, 327681, 0, 196609, 393217, 0, 131073, 196609, 0)
+
+[node name="Key" type="Sprite2D" parent="."]
+position = Vector2(0, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("2_pg2yn")
 
 [editable path="Item"]

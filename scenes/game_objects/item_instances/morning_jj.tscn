@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://doe0jwo5vfrdc"]
+[gd_scene load_steps=3 format=3 uid="uid://doe0jwo5vfrdc"]
 
 [ext_resource type="PackedScene" uid="uid://btmbhhii75uyt" path="res://scenes/game_objects/item/item.tscn" id="1_fdhxl"]
+[ext_resource type="Texture2D" uid="uid://d0shf8usbbrem" path="res://assets/sprites/items/fleau-jj.png" id="2_jvdo4"]
 
 [node name="MorningJJ" type="Node2D"]
 
@@ -13,5 +14,9 @@ layer_0/tile_data = PackedInt32Array(-1, 0, 65536, -65536, 0, 65536, 131071, 0, 
 
 [node name="HaloMap" parent="Item" index="1"]
 layer_0/tile_data = PackedInt32Array(327676, 131073, 0, 393212, 327681, 0, 393213, 65537, 0, 327677, 1966081, 0, 327678, 1966081, 0, 393214, 65537, 0, 393215, 393217, 0, 327679, 196609, 0, 262143, 196609, 0, 196607, 458753, 0, 196606, 1, 0, 196605, 1, 0, 196604, 262145, 0, 262140, 131073, 0, 262141, 1966081, 0, 262142, 1966081, 0, 0, 131073, 0, 65536, 327681, 0, 65537, 393217, 0, 1, 196609, 0, -65535, 196609, 0, -65536, 1179649, 0, -131072, 1, 0, -131071, 458753, 0, -65537, 1, 0, -1, 65537, 0, -2, 65537, 0, -65538, 1, 0, -65539, 1, 0, -65540, 262145, 0, -4, 327681, 0, -3, 65537, 0)
+
+[node name="Fleau-jj" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_jvdo4")
 
 [editable path="Item"]
