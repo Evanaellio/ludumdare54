@@ -105,7 +105,7 @@ func _on_next_quest_timer_timeout():
 	start_quest()
 
 func start_quest():
-	var request = ItemsPacks.keys()[randi() % ItemsPacks.keys().size()]
+	var request = ItemsPacks.keys()[randi() % (ItemsPacks.keys().size() - 1)]
 	var pack: PackedScene = ItemsPacks.get(request)
 	var item = pack.instantiate()
 	

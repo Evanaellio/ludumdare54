@@ -68,8 +68,22 @@ func add_to_queue(item_name: String, rarity: int):
 		print("queue is full!")
 
 func add_random_to_queue():
-	var n = ItemsPacks.keys()[randi() % ItemsPacks.keys().size()]
-	add_to_queue(n, _rand_rarity(rarity_mult * temp_rarity_mult))
+	add_to_queue(rand_item(), _rand_rarity(rarity_mult * temp_rarity_mult))
+
+func rand_item():
+	var weights: Array[Dictionary] = [
+		{"value": "apple", "weight": 10.0},
+		{"value": "armor", "weight": 10.0},
+		{"value": "arrow", "weight": 10.0},
+		{"value": "boomerang", "weight": 10.0},
+		{"value": "bow", "weight": 10.0},
+		{"value": "hatchet", "weight": 10.0},
+		{"value": "key", "weight": 10.0},
+		{"value": "sword", "weight": 10.0},
+		{"value": "magic_potion", "weight": 10.0},
+		{"value": "magic_morning_jj", "weight": 3.0}
+	]
+	return RngUtils.array_with_weighted(weights)[0].value
 
 func has_space() -> bool:
 	return _first_free() != null
