@@ -12,7 +12,6 @@ func _process(delta):
 		pass
 	else:
 		snap_item_to_cursor()
-		display_preview()
 
 func _input(event: InputEvent):
 	if frameProcessed:
@@ -53,6 +52,3 @@ func dropItem(target):
 func snap_item_to_cursor():
 	var mousePosition = get_viewport().get_mouse_position()
 	selectedItem.global_position = mousePosition
-
-func display_preview():
-	selectedItem.display_preview()
