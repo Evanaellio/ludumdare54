@@ -8,6 +8,7 @@
 
 [node name="Item" parent="." instance=ExtResource("1_vlldi")]
 position = Vector2(-32, 32)
+item_type = "Arrow"
 
 [node name="TileMap" parent="Item" index="0"]
 layer_0/tile_data = PackedInt32Array(0, 0, 65536, -65536, 0, 65536, -131072, 0, 65536)

@@ -9,6 +9,7 @@
 [node name="Item" parent="." instance=ExtResource("1_df5t6")]
 position = Vector2(-32, 0)
 rotation = 1.57079
+item_type = "Bow"
 
 [node name="TileMap" parent="Item" index="0"]
 layer_0/tile_data = PackedInt32Array(0, 0, 65536, -65536, 0, 65536, -131072, 0, 65536, 131071, 0, 65536, -131073, 0, 65536)

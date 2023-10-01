@@ -8,6 +8,7 @@
 
 [node name="Item" parent="." instance=ExtResource("1_ep48b")]
 position = Vector2(-32, 32)
+item_type = "Armor"
 
 [node name="TileMap" parent="Item" index="0"]
 layer_0/tile_data = PackedInt32Array(65535, 0, 65536, -1, 0, 65536, -65537, 0, 65536, -65536, 0, 65536, 0, 0, 65536, 1, 0, 65536, -65535, 0, 65536, -131071, 0, 65536)

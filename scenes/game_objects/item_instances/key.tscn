@@ -7,6 +7,7 @@
 
 [node name="Item" parent="." instance=ExtResource("1_moopu")]
 position = Vector2(32, -32)
+item_type = "Key"
 
 [node name="TileMap" parent="Item" index="0"]
 layer_0/tile_data = PackedInt32Array(65534, 0, 65536, 65535, 0, 65536, 0, 0, 65536, -65536, 0, 65536)

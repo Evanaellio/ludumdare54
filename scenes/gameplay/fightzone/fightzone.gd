@@ -15,6 +15,7 @@ extends Node2D
 @onready var quest_slot: Control = $GUI/Query/ItemViewport/SubViewport/ItemAttach
 @onready var quest_progress: ProgressBar = $GUI/QueryProgressBar
 @onready var quest_timer: Timer = $QuestTimer
+@onready var next_quest_timer: Timer = $NextQuestTimer
 
 signal found_loot
 
@@ -23,10 +24,13 @@ enum States {WALK, FIGHT}
 var state = States.WALK
 var boosted = false
 
+var requestItemType: String
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	quest_progress.hide()
 	quest_gui.hide()
+	boost_remaining.hide()
 	fight_gui.hide()
 
 	next_loot()
@@ -54,14 +58,14 @@ func _on_loot_timer_timeout():
 
 # Start timer to next fight
 func next_fight():
-	var wait_length = 15 + randi_range(-5, 5)
+	var wait_length = 14.5 + randi_range(-5, 5)
 	next_fight_timer.start(wait_length)
 
 func _on_next_fight_timer_timeout():
 	state = States.FIGHT
 	fight_gui.show()
 	loot_timer.paused = true
-	var fight_length = 3 + randi_range(-2, 2)
+	var fight_length = 3 + randi_range(-1, 2)
 	fight_timer.start(fight_length)
 
 func _on_fight_timer_timeout():
@@ -80,11 +84,22 @@ func boost():
 func _on_boost_timer_timeout():
 	boosted = false
 	boost_remaining.hide()
+	next_quest()
 
+# Start timer to next quest
 func next_quest():
+	var wait_length = 5 + randi_range(-1, 2)
+	next_quest_timer.start(wait_length)
+
+func _on_next_quest_timer_timeout():
+	start_quest()
+
+func start_quest():
 	var request = "bow"
 	var pack: PackedScene = load("res://scenes/game_objects/item_instances/" + request +".tscn")
 	var item = pack.instantiate()
+	
+	requestItemType = item.get_node("Item").item_type
 	
 	quest_slot.add_child(item)
 	
@@ -96,3 +111,33 @@ func next_quest():
 func _on_quest_timer_timeout():
 	quest_progress.hide()
 	quest_gui.hide()
+	requestItemType = ""
+	if not boosted:
+		print("sad :(")
+		next_quest()
+
+func cancel_quest():
+	for _i in quest_slot.get_children():
+		_i.queue_free()
+	quest_timer.stop()
+	_on_quest_timer_timeout()
+
+var clicking = false
+func _on_deposit_area_input_event(_viewport, event, _shape_idx):
+	if event is InputEventMouseButton && event.button_index == 1:
+		if event.pressed :
+			clicking = true
+		if !event.pressed && clicking:
+			var selected: Node2D = get_node("/root/SelectionManager").selectedItem
+			if selected != null and quest_gui.visible:
+				var nodeName = selected.item_type
+				if requestItemType == nodeName:
+					print("correct item " + nodeName)
+					get_node("/root/SelectionManager").destroyItem()
+					boost()
+					cancel_quest()
+				else:
+					print("wrong item : got " + nodeName + " expected " + requestItemType)
+
+func _on_deposit_area_mouse_exited():
+	clicking = false

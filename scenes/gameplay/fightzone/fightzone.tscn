@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bhaya5sk8xnk"]
+[gd_scene load_steps=12 format=3 uid="uid://bhaya5sk8xnk"]
 
 [ext_resource type="FontFile" uid="uid://cawekr44fruhm" path="res://assets/fonts/open-sans/open-sans-regular.ttf" id="1_4w4tg"]
 [ext_resource type="Script" path="res://scenes/gameplay/fightzone/fightzone.gd" id="1_edjpk"]
@@ -40,6 +40,9 @@ ProgressBar/styles/fill = SubResource("StyleBoxFlat_yrjmx")
 shader = ExtResource("4_h5f0o")
 shader_parameter/grayscale = true
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ukfa6"]
+size = Vector2(169, 117)
+
 [node name="Fightzone" type="Node2D"]
 script = ExtResource("1_edjpk")
 
@@ -74,7 +77,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="BoostProgressBar" type="ProgressBar" parent="GUI"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -179,6 +181,7 @@ offset_left = 13.0
 offset_top = 12.0
 offset_right = 173.0
 offset_bottom = 120.0
+mouse_filter = 2
 
 [node name="SubViewport" type="SubViewport" parent="GUI/Query/ItemViewport"]
 disable_3d = true
@@ -205,8 +208,20 @@ one_shot = true
 [node name="QuestTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="NextQuestTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DepositArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DepositArea"]
+position = Vector2(92.5, 65.5)
+shape = SubResource("RectangleShape2D_ukfa6")
+
 [connection signal="timeout" from="LootTimer" to="." method="_on_loot_timer_timeout"]
 [connection signal="timeout" from="BoostTimer" to="." method="_on_boost_timer_timeout"]
 [connection signal="timeout" from="FightTimer" to="." method="_on_fight_timer_timeout"]
 [connection signal="timeout" from="NextFightTimer" to="." method="_on_next_fight_timer_timeout"]
 [connection signal="timeout" from="QuestTimer" to="." method="_on_quest_timer_timeout"]
+[connection signal="timeout" from="NextQuestTimer" to="." method="_on_next_quest_timer_timeout"]
+[connection signal="input_event" from="DepositArea" to="." method="_on_deposit_area_input_event"]
+[connection signal="mouse_exited" from="DepositArea" to="." method="_on_deposit_area_mouse_exited"]

@@ -49,6 +49,15 @@ func dropItem(target):
 			selectedItem = null
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
+func destroyItem():
+	if (not frameProcessed) and not selectedItem == null:
+		print("destroy item")
+		frameProcessed = true
+		selectedItem.clear_preview()
+		selectedItem.queue_free()
+		selectedItem = null
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
 func snap_item_to_cursor():
 	var mousePosition = get_viewport().get_mouse_position()
 	selectedItem.global_position = mousePosition
