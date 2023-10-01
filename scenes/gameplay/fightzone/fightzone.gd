@@ -45,7 +45,7 @@ func _process(delta):
 	
 # Start timer to next loot, timer can be paused during fights
 func next_loot():
-	var wait_length = 15 + randi_range(-10, 10)
+	var wait_length = 5 + randi_range(-2, 3)
 	loot_timer.start(wait_length)
 
 func _on_loot_timer_timeout():
@@ -61,7 +61,7 @@ func _on_next_fight_timer_timeout():
 	state = States.FIGHT
 	fight_gui.show()
 	loot_timer.paused = true
-	var fight_length = 5 + randi_range(-2, 2)
+	var fight_length = 3 + randi_range(-2, 2)
 	fight_timer.start(fight_length)
 
 func _on_fight_timer_timeout():

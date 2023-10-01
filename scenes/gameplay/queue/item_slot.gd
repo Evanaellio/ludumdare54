@@ -20,8 +20,9 @@ signal item_picked_up
 func selectItem():
 	if item != null and noItemSelected():
 		print("item picked up")
-		item_picked_up.emit(item_ptr)
+		var ptr = item_ptr
 		item = null
+		item_picked_up.emit(item_ptr)
 		item_ptr = null
 
 func _on_area_2d_mouse_entered():
