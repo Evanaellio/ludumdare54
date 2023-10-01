@@ -8,6 +8,8 @@ extends Node2D
 		if value != null:
 			item_ptr = value.instantiate()
 			$Item.add_child(item_ptr)
+		else:
+			item_ptr = null
 	get:
 		return item_pack
 
