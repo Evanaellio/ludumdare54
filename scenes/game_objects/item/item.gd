@@ -33,6 +33,8 @@ func on_click():
 		incr_rarity()
 		backpack.removed_not_selected_upgrade(self)
 		is_electable_for_upgrade = false
+		selection_manager.locked = false
+		tween_upgrade.kill()
 	else:
 		selection_manager.selectItem(self, null)
 
@@ -97,6 +99,8 @@ func clear_preview():
 #  888  `88b.   .8'     `888.   888  `88b.   888       888           888      
 # o888o  o888o o88o     o8888o o888o  o888o o888o     o888o         o888o     
 
+var tween_upgrade : Tween = null
+
 const RARITY_COLORS : Array[Color] = [
 	Color("ecf0f1"), # white
 	Color("2ecc71"), # green
@@ -144,4 +148,16 @@ func _set_base_score() -> void:
 func _ready() -> void:
 	_set_base_score()
 	set_rarity(0)
+
+func animate_upgrade():
+	tween_upgrade = create_tween().set_loops()
+	var next_rarity_color : Color = RARITY_COLORS[rarity + 1]
+	var next_rarity_transparent = next_rarity_color
+	next_rarity_transparent.a = 0
+	
+	tween_upgrade.tween_property(halo_map, "modulate", next_rarity_color, 0.4)
+	tween_upgrade.tween_interval(0.3)
+	tween_upgrade.tween_property(halo_map, "modulate", next_rarity_transparent, 0.4)
+	
+	tween_upgrade.play()
 

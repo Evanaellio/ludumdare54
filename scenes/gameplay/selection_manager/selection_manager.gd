@@ -15,13 +15,14 @@ var ItemsPacks = {
 
 var selectedItem: Node2D = null
 var selectedItemSource: Node2D = null
-var frameProcessed = false;
+var frameProcessed = false
+var locked = false
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 func _process(delta):
-	frameProcessed = false;
+	frameProcessed = false
 	if selectedItem:
 		snap_item_to_cursor()
 		selectedItem.display_preview()
@@ -44,8 +45,8 @@ func _input(event: InputEvent):
 		if event.button_index == 2 && not event.pressed && not selectedItemSource == null:
 			selectedItemSource.unselectItem(selectedItem)
 
-func selectItem(item: Node2D, source: Node2D):
-	if (not frameProcessed) and selectedItem == null:
+func selectItem(item: Node2D, source: Node2D) -> bool:
+	if (not frameProcessed) and selectedItem == null and not locked:
 		print("selecting item")
 		frameProcessed = true
 		selectedItemSource = source
@@ -55,6 +56,8 @@ func selectItem(item: Node2D, source: Node2D):
 		snap_item_to_cursor()
 		item.clear_previously_occupied_by_me()
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		return true
+	return false
 		
 
 func dropItem(target):

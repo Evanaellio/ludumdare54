@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var queue = $"/root/Gameplay/Queue"
+@onready var selection_manager = $"/root/SelectionManager"
 
 @onready var occupied_tilemap : TileMap = %OccupiedTileMap
 
@@ -120,6 +121,8 @@ func placeItem(item: Node2D) -> bool:
 			waiting_upgrade_selected = true
 			for i in upgradable_items:
 				i.is_electable_for_upgrade = true
+				i.animate_upgrade()
+				selection_manager.locked = true
 		return true
 	else:
 		return false
