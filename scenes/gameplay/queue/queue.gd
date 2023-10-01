@@ -22,15 +22,6 @@ var temp_rarity_mult = 1 # increase with boost
 var active_slot: Node2D = null
 var selected_oite
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func _on_item_picked_up(slot_node: Node2D):
 	active_slot = slot_node
 	var selected_item = slot_node.item_ptr
@@ -92,10 +83,10 @@ func has_space() -> bool:
 	return _first_free() != null
 
 func _rand_rarity(mutl: int):
-	var max = RARITY_CHANCES.size() - 1
-	for i in max:
-		if randi_range(1, RARITY_CHANCES[max-i]) <= mutl:
-			return max-i
+	var maxRarity = RARITY_CHANCES.size() - 1
+	for i in maxRarity:
+		if randi_range(1, RARITY_CHANCES[maxRarity-i]) <= mutl:
+			return maxRarity-i
 	return 0
 
 func _first_free() -> Node2D:
@@ -110,3 +101,17 @@ func _first_free() -> Node2D:
 	if $Items/slot5.item == null:
 		return $Items/slot5
 	return null
+
+# I miss arrays
+func items_amount() -> int:
+	if $Items/slot1.item == null:
+		return 0
+	if $Items/slot2.item == null:
+		return 1
+	if $Items/slot3.item == null:
+		return 2
+	if $Items/slot4.item == null:
+		return 3
+	if $Items/slot5.item == null:
+		return 4
+	return 5

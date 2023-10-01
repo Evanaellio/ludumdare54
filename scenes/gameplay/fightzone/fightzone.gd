@@ -59,7 +59,8 @@ func _process(delta):
 
 # Start timer to next loot, timer can be paused during fights
 func next_loot():
-	var wait_length = 5 + randi_range(-2, 3)
+	var items_in_queue = Queue.items_amount()
+	var wait_length = 3 + items_in_queue + randi_range(-2, 0)
 	loot_timer.start(wait_length)
 
 func _on_loot_timer_timeout():
