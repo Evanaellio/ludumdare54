@@ -107,7 +107,7 @@ func snap_item_to_grid(item: Node2D) -> void:
 	item.global_translate(backpack_coords_global - item_tile.global_position)
 
 func canItemBePlaced(item: Node2D) -> bool:
-	return not item.check_occupied()
+	return not item.check_occupied(upgradable_items)
 
 func placeItem(item: Node2D) -> Node2D:
 	var swappedItem =  item.place_in_backpack()

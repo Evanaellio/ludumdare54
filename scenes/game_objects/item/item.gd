@@ -29,15 +29,16 @@ func display_preview():
 		check_occupied() # will update preview when we move to a new location
 
 func on_click():
-	noise()
-	if is_electable_for_upgrade:
-		incr_rarity()
-		backpack.removed_not_selected_upgrade(self)
-		is_electable_for_upgrade = false
-		selection_manager.locked = false
-		tween_upgrade.kill()
-	else:
-		selection_manager.selectItem(self, null, true)
+	if selection_manager.selectedItem == null:
+		noise()
+		if is_electable_for_upgrade:
+			incr_rarity()
+			backpack.removed_not_selected_upgrade(self)
+			is_electable_for_upgrade = false
+			selection_manager.locked = false
+			tween_upgrade.kill()
+		else:
+			selection_manager.selectItem(self, null, true)
 
 func tile_ready(tile):
 	tile.get_node("Area2D").input_pickable = false
@@ -49,10 +50,11 @@ func get_map_coords_for_tile_node(tile_node) -> Vector2i:
 		return map_coords
 
 # Handles preview
-func check_occupied() -> bool:
+func check_occupied(lockedItems: Array[Node2D] = []) -> bool:
 	clear_preview()
 	var conflicts: Array[Node2D] = []
 	var outOfBounds: bool = false
+	var lockedItemConflict: bool = false
 	for tile_node in tile_nodes:
 		var map_coords = get_map_coords_for_tile_node(tile_node)
 		var status = occupied_tilemap.get_cell_atlas_coords(0, map_coords)
@@ -60,13 +62,15 @@ func check_occupied() -> bool:
 			if backpack.is_in_map_bounds(map_coords):
 				preview_tilemap.set_cell(0, map_coords, 0, PREVIEW_RED)
 				var item = backpack.get_item_lookup_at(map_coords)
+				if item in lockedItems:
+					lockedItemConflict = true
 				if not item in conflicts:
 					conflicts.push_front(item)
 			else: 
 				outOfBounds = true
 		elif backpack.is_in_map_bounds(map_coords):
 			preview_tilemap.set_cell(0, map_coords, 0, PREVIEW_GREEN)
-	return outOfBounds || conflicts.size() > 1
+	return outOfBounds || lockedItemConflict || conflicts.size() > 1
 
 func get_conflicts() -> Array[Node2D]:
 	var conflicts: Array[Node2D] = []

@@ -28,7 +28,7 @@ var selected: bool = false
 signal item_picked_up
 
 func selectItem():
-	if item_ptr != null and noItemSelected():
+	if item_ptr != null and noItemSelected() and not get_node("/root/SelectionManager").locked:
 		selected = true
 		$Sprite.modulate = "#bea5eb"
 		item_ptr.get_node("Item").noise()
