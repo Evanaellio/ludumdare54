@@ -1,7 +1,9 @@
 extends Node2D
 
+
 @export var item_type: String
 
+@onready var backpack = $"/root/Gameplay/Backpack"
 @onready var occupied_tilemap : TileMap = $"/root/Gameplay/Backpack/OccupiedTileMap"
 @onready var preview_tilemap : TileMap = $"/root/Gameplay/Backpack/PreviewTileMap"
 @onready var selection_manager = $"/root/SelectionManager"
@@ -43,9 +45,10 @@ func check_occupied() -> bool:
 		var map_coords = get_map_coords_for_tile_node(tile_node)
 		var status = occupied_tilemap.get_cell_atlas_coords(0, map_coords)
 		if status == OCCUPIED:
-			preview_tilemap.set_cell(0, map_coords, 0, PREVIEW_RED)
 			occupied = true
-		else:
+			if backpack.is_in_map_bounds(map_coords):
+				preview_tilemap.set_cell(0, map_coords, 0, PREVIEW_RED)
+		elif backpack.is_in_map_bounds(map_coords):
 			preview_tilemap.set_cell(0, map_coords, 0, PREVIEW_GREEN)
 	return occupied
 	
