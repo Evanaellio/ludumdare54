@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://mt3uidtqqkjb"]
+
+[ext_resource type="Script" path="res://scenes/gameplay/score_gui/score_gui.gd" id="1_a0dxf"]
+[ext_resource type="Theme" uid="uid://ducfept6pmkkm" path="res://assets/ui-theme.tres" id="1_l3odu"]
+
+[node name="ScoreGUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a0dxf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 810.0
+offset_right = 889.0
+offset_bottom = 124.0
+
+[node name="Score" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Score"]
+layout_mode = 2
+theme = ExtResource("1_l3odu")
+text = "Score:"
+
+[node name="Value" type="Label" parent="VBoxContainer/Score"]
+layout_mode = 2
+theme = ExtResource("1_l3odu")
+text = "0000"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Backpack" type="VBoxContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Backpack"]
+layout_mode = 2
+text = "Backpack"
+
+[node name="Value" type="Label" parent="VBoxContainer/Backpack"]
+layout_mode = 2
+text = "000"

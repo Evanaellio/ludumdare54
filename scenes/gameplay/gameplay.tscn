@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://4fyoq8npekf0"]
+[gd_scene load_steps=7 format=3 uid="uid://4fyoq8npekf0"]
 
 [ext_resource type="PackedScene" uid="uid://barl4q1kugrmm" path="res://scenes/gameplay/pause-layer/pause-layer.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://mt3uidtqqkjb" path="res://scenes/gameplay/score_gui/score_gui.tscn" id="2_l6dpm"]
 [ext_resource type="PackedScene" uid="uid://4eycyuaq04ei" path="res://scenes/gameplay/backpack.tscn" id="4_eahcj"]
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://i0y8p7u3goat" path="res://scenes/gameplay/queue/queue.tscn" id="5_ja52p"]
@@ -20,5 +21,8 @@ position = Vector2(24, 680)
 
 [node name="Backpack" parent="." instance=ExtResource("4_eahcj")]
 position = Vector2(24, 24)
+
+[node name="ScoreGUI" parent="." instance=ExtResource("2_l6dpm")]
+mouse_filter = 2
 
 [connection signal="item_picked_up" from="Queue" to="." method="_on_queue_item_picked_up"]
