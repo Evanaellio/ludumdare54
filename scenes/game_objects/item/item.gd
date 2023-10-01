@@ -27,7 +27,6 @@ func display_preview():
 
 func on_click():
 	selection_manager.selectItem(self)
-	check_occupied()
 
 func tile_ready(tile):
 	tile.get_node("Area2D").input_pickable = false
