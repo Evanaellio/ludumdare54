@@ -3,11 +3,10 @@ extends Node2D
 
 @export var item_type: String
 
-@onready var backpack = $"/root/Gameplay/Backpack"
+@onready var backpack : Node2D = $"/root/Gameplay/Backpack"
 @onready var occupied_tilemap : TileMap = $"/root/Gameplay/Backpack/OccupiedTileMap"
 @onready var preview_tilemap : TileMap = $"/root/Gameplay/Backpack/PreviewTileMap"
 @onready var selection_manager = $"/root/SelectionManager"
-@onready var backpack : Node2D = $"/root/Gameplay/Backpack"
 
 var tile_nodes : Array[Node2D] = []
 
