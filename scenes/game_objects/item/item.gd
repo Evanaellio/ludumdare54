@@ -7,6 +7,8 @@ extends Node2D
 @onready var occupied_tilemap : TileMap = $"/root/Gameplay/Backpack/OccupiedTileMap"
 @onready var preview_tilemap : TileMap = $"/root/Gameplay/Backpack/PreviewTileMap"
 @onready var selection_manager = $"/root/SelectionManager"
+@onready var backpack : Node2D = $"/root/Gameplay/Backpack"
+
 var tile_nodes : Array[Node2D] = []
 
 var tiles_occupied_by_me : Array[Vector2i] = []
@@ -54,6 +56,7 @@ func check_occupied() -> bool:
 func clear_previously_occupied_by_me():
 	for mine in tiles_occupied_by_me:
 		occupied_tilemap.set_cell(0, mine, 0, EMPTY)
+		backpack.set_item_lookup_at(null, tiles_occupied_by_me)
 		tiles_occupied_by_me = []
 
 func place_in_backpack() -> bool:
