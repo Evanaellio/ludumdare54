@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://djl3w76d3rg0l"]
 
 [sub_resource type="SystemFont" id="SystemFont_lg8fr"]
+subpixel_positioning = 0
 
 [node name="WinScreen" type="Control"]
 z_index = 2000

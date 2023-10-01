@@ -4,6 +4,9 @@ signal item_picked_up
 
 @onready var ItemsPacks = get_node("/root/SelectionManager").ItemsPacks
 
+# Max item rarity given in a quest
+var rarity_progression = 0
+
 # starting at : 1 out of X 
 # then : rarity_mult out of X
 const RARITY_CHANCES = [ 

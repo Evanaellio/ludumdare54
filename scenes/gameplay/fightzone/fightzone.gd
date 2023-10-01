@@ -19,7 +19,7 @@ extends Node2D
 
 @onready var score_gui: Control = $"/root/Gameplay/ScoreGUI"
 
-@onready var ItemsPacks = get_node("/root/SelectionManager").ItemsPacks
+@onready var ItemsPacks = SelectionManager.ItemsPacks
 @onready var Queue = get_node("/root/Gameplay/Queue")
 
 signal found_loot
@@ -43,7 +43,7 @@ func _ready():
 	next_quest()
 	# boost()
 
-	$GUI/AnimationPlayer.play("npc")
+	%AnimationPlayer.play("npc")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -77,13 +77,13 @@ func _on_next_fight_timer_timeout():
 	loot_timer.paused = true
 	var fight_length = 3 + randi_range(-1, 2)
 	fight_timer.start(fight_length)
-	$GUI/AnimationPlayer.play("attac")
+	%AnimationPlayer.play("attac")
 
 func _on_fight_timer_timeout():
 	state = States.WALK
 	fight_gui.hide()
 	loot_timer.paused = false
-	$GUI/AnimationPlayer.play("npc")
+	%AnimationPlayer.play("npc")
 	next_fight()
 
 # When NPC receives requested item
@@ -146,24 +146,19 @@ func _on_deposit_area_input_event(_viewport, event, _shape_idx):
 		if event.pressed :
 			clicking = true
 		if !event.pressed && clicking:
-			var selected: Node2D = get_node("/root/SelectionManager").selectedItem
+			var selected: Node2D = SelectionManager.selectedItem
 			if selected != null and quest_gui.visible:
 				var nodeName = selected.item_type
 				if requestItemType == nodeName:
-					print("correct item " + nodeName)
 					var score = selected.get_score()
-					print(selected.rarity)
-					print(selected.base_score)
-					print(score)
 					score_gui.incr_score(score)
-					get_node("/root/SelectionManager").destroyItem()
-					if get_node("/root/SelectionManager").selectedItemSource != null:
+					SelectionManager.destroyItem()
+					if SelectionManager.selectedItemSource != null:
 						# if item taken directly from queue, release queue slot
-						get_node("/root/Gameplay/Queue").item_taken_from_queue()
+						Queue.item_taken_from_queue()
 					boost(selected.rarity + 2)
+					
 					cancel_quest()
-				else:
-					print("wrong item : got " + nodeName + " expected " + requestItemType)
 
 func _on_deposit_area_mouse_exited():
 	clicking = false
