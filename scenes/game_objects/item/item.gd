@@ -194,3 +194,17 @@ func animate_upgrade():
 	
 	tween_upgrade.play()
 
+func animate_upgrade_component(position: Vector2):
+	var tween_component = create_tween().set_parallel().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
+	tween_component.tween_property(self, "scale", Vector2(0, 0), 0.68)
+	tween_component.tween_property(self, "global_position", position, 0.7)
+	tween_component.tween_property(self, "rotation_degrees", self.rotation_degrees + 180, 0.7)
+	tween_component.connect("finished", on_upgrade_component_finished)
+	tween_component.play()
+	
+	
+func on_upgrade_component_finished():
+	clear_previously_occupied_by_me()
+	queue_free()
+	
+	

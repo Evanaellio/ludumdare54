@@ -93,8 +93,7 @@ func get_items_from_completed_lines(completed_lines: Array[int]) -> Array[Node2D
 func removed_not_selected_upgrade(selected: Node2D) -> void:
 	for i in upgradable_items:
 		if i != selected:
-			i.clear_previously_occupied_by_me()
-			i.queue_free()
+			i.animate_upgrade_component(selected.global_position)
 	upgradable_items = []
 	waiting_upgrade_selected = false
 
