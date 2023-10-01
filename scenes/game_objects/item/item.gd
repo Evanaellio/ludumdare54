@@ -163,7 +163,7 @@ var rarity: int = -1
 
 ## compute score based on base_score and rarity
 func get_score() -> int:
-	return base_score * 2^rarity
+	return base_score * pow(4, rarity)
 
 func set_rarity(new_rarity: int):
 	rarity = new_rarity
