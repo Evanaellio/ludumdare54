@@ -59,7 +59,7 @@ func add_to_queue(item_name: String, rarity: int):
 		slot.item = pack
 		slot.rarity = rarity
 	else:
-		print("queue is full!")
+		$"/root/Gameplay".lose_game()
 
 func add_random_to_queue():
 	add_to_queue(rand_item(), _rand_rarity(rarity_mult * temp_rarity_mult))

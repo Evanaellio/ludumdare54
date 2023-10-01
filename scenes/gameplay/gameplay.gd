@@ -29,6 +29,10 @@ func win_game():
 	# TODO : lock UI, do some logic, go back to menu etc...
 	%WinScreen.visible = true
 
+func lose_game():
+	# TODO : lock UI, do some logic, go back to menu etc...
+	%LoseScreen.visible = true
+
 func _process(delta):
 	pass
 

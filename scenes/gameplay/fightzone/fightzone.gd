@@ -76,6 +76,7 @@ func _on_next_fight_timer_timeout():
 	state = States.FIGHT
 	fight_gui.show()
 	loot_timer.paused = true
+	boost_timer.paused = true
 	var fight_length = 3 + randi_range(-1, 2)
 	fight_timer.start(fight_length)
 	%AnimationPlayer.play("attac")
@@ -84,6 +85,7 @@ func _on_fight_timer_timeout():
 	state = States.WALK
 	fight_gui.hide()
 	loot_timer.paused = false
+	boost_timer.paused = false
 	%AnimationPlayer.play("npc")
 	next_fight()
 
