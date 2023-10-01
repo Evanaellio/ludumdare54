@@ -24,9 +24,11 @@ func _process(delta):
 func on_click():
 	# Might need a global (autloaded) singleton to do that and make sure only one item is selected at once
 	get_node("/root/SelectionManager").selectItem(self)
+	disable_collisions()
 	check_occupied()
 
 func tile_ready(tile):
+	tile.get_node("Area2D").input_pickable = false
 	tile_nodes.append(tile)
 
 func get_map_coords_for_tile_node(tile_node) -> Vector2i:
@@ -58,10 +60,19 @@ func place_in_backpack() -> bool:
 			var map_coords = get_map_coords_for_tile_node(tile_node)
 			occupied_tilemap.set_cell(0, map_coords, 0, OCCUPIED)
 			tiles_occupied_by_me.append(map_coords)
+		enable_collisions()
 		clear_preview()
 		return true
 	else:
 		return false
+
+func disable_collisions():
+	for tile_node in tile_nodes:
+		tile_node.get_node("Area2D").input_pickable = false
+
+func enable_collisions():
+	for tile_node in tile_nodes:
+		tile_node.get_node("Area2D").input_pickable = true
 
 func clear_preview():
 	preview_tilemap.clear()

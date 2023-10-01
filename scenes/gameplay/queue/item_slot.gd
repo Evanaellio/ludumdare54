@@ -18,14 +18,16 @@ var highlight: bool = false
 signal item_picked_up
 
 func selectItem():
-	if item != null:
+	if item != null and noItemSelected():
 		print("item picked up")
-		item_picked_up.emit(item_ptr)
+		var ptr = item_ptr
 		item = null
+		item_picked_up.emit(item_ptr)
 		item_ptr = null
 
 func _on_area_2d_mouse_entered():
-	$Sprite.modulate = "#1edeff"
+	if noItemSelected():
+		$Sprite.modulate = "#1edeff"
 
 func _on_area_2d_mouse_exited():
 	$Sprite.modulate = "#ffffff"
@@ -37,3 +39,6 @@ func _on_area_2d_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton && !event.pressed && highlight:
 		if item_ptr != null:
 			selectItem()
+
+func noItemSelected() -> bool:
+	return get_node("/root/SelectionManager").selectedItem == null

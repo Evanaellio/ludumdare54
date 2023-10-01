@@ -5,17 +5,25 @@ extends Node2D
 @onready var img : Sprite2D = %TilePlaceholder
 
 var clicking : bool = false
+var frameProcessed = false;
 
 func _ready():
 	$TilePlaceholder.hide()
 	item.tile_ready(self)
 
+func _process(_delta):
+	frameProcessed = false;
+
 func _on_area_2d_input_event(viewport, event, shape_idx):
+	if frameProcessed:
+		return
 	if event is InputEventMouseButton && event.button_index == 1:
 		if event.pressed :
 			clicking = true
+			frameProcessed = true
 		if !event.pressed && clicking:
 			item.on_click()
+			frameProcessed = true
 
 func _on_area_2d_mouse_exited():
 	clicking = false
