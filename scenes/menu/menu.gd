@@ -2,6 +2,7 @@ extends Control
 
 
 func _ready():
+	$AudioStreamPlayer.play()
 	# needed for gamepads to work
 	$VBoxContainer/PlayButton.grab_focus()
 	if OS.has_feature('HTML5'):
@@ -32,3 +33,7 @@ func _on_ExitButton_pressed() -> void:
 		await transitions.anim.animation_finished
 		await get_tree().create_timer(0.3).timeout
 	get_tree().quit()
+
+
+func _on_audio_stream_player_finished():
+	$AudioStreamPlayer.play()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c2gocuhw2o7py"]
+[gd_scene load_steps=15 format=3 uid="uid://c2gocuhw2o7py"]
 
 [ext_resource type="Theme" uid="uid://ducfept6pmkkm" path="res://assets/ui-theme.tres" id="1"]
 [ext_resource type="FontFile" uid="uid://da2t6lyf41wty" path="res://assets/fonts/open-sans/open-sans-bold.ttf" id="4"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bjqj2w5pdpuxu" path="res://assets/sprites/items/sword.png" id="11_d4btp"]
 [ext_resource type="Texture2D" uid="uid://cflrh5sy2el88" path="res://assets/sprites/items/potion.png" id="12_jjtkm"]
 [ext_resource type="Texture2D" uid="uid://d0shf8usbbrem" path="res://assets/sprites/items/fleau-jj.png" id="13_0r1ub"]
+[ext_resource type="AudioStream" uid="uid://c2a41mivalk2r" path="res://assets/sfx/menu.ogg" id="14_adsan"]
 [ext_resource type="Texture2D" uid="uid://b3lbc4ekrsf5y" path="res://assets/sprites/items/key.png" id="14_g8etv"]
 
 [node name="Menu" type="Control"]
@@ -257,5 +258,11 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.886275, 0.87451, 0.87451, 1)
 text = "Salier"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_adsan")
+volume_db = -5.012
+autoplay = true
+
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
