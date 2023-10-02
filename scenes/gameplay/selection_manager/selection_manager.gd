@@ -38,6 +38,14 @@ func _input(event: InputEvent):
 			if not selectedItem == null:
 				selectedItem.custom_rotate(PI / 2)
 				frameProcessed = true
+		if event.pressed and event.keycode == KEY_LEFT:
+			if not selectedItem == null:
+				selectedItem.custom_rotate(- PI / 2)
+				frameProcessed = true
+		if event.pressed and event.keycode == KEY_RIGHT:
+			if not selectedItem == null:
+				selectedItem.custom_rotate(PI / 2)
+				frameProcessed = true
 	if event is InputEventMouseButton && selectedItem != null:
 		if event.button_index == 4:
 			selectedItem.custom_rotate(PI / 2)
