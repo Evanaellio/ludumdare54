@@ -23,7 +23,7 @@ var locked = false
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
-func _process(delta):
+func _process(_delta):
 	frameProcessed = false;
 	if not selectedItem == null:
 

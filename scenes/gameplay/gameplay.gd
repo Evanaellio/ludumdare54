@@ -34,16 +34,11 @@ func lose_game():
 	# TODO : lock UI, do some logic, go back to menu etc...
 	%LoseScreen.visible = true
 	$Fightzone.stop()
-	
-func _process(delta):
-	pass
 
 func _on_queue_item_picked_up(item_node: Node2D):
 	var selectionManager = get_node("/root/SelectionManager")
 	if selectionManager.selectItem(item_node.get_node("Item"), $Queue):
 		$Backpack.add_child(item_node)
-		
-
 
 func _on_audio_stream_player_finished():
 	$AudioStreamPlayer.play()

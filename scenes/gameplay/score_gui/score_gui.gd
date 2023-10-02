@@ -20,6 +20,3 @@ func decr_score(val: int) -> void:
 
 func _ready():
 	update_score()
-
-func _process(delta):
-	pass

@@ -14,7 +14,7 @@ func _ready():
 func _process(_delta):
 	frameProcessed = false;
 
-func _on_area_2d_input_event(viewport, event, shape_idx):
+func _on_area_2d_input_event(_viewport, event, _shape_idx):
 	if frameProcessed:
 		return
 	if event is InputEventMouseButton && event.button_index == 1:
