@@ -15,23 +15,23 @@ polygon = PackedVector2Array(-223, -152, -95, -152, -95, 424, -223, 424)
 scale = Vector2(0.75, 0.75)
 
 [node name="slot1" parent="Items" instance=ExtResource("4_sb5mx")]
-position = Vector2(85.3333, 85.3333)
+position = Vector2(84, 80)
 scale = Vector2(0.25, 0.25)
 
 [node name="slot2" parent="Items" instance=ExtResource("4_sb5mx")]
-position = Vector2(85.3333, 234.667)
+position = Vector2(84, 230)
 scale = Vector2(0.25, 0.25)
 
 [node name="slot3" parent="Items" instance=ExtResource("4_sb5mx")]
-position = Vector2(85.3333, 373.333)
+position = Vector2(84, 380)
 scale = Vector2(0.25, 0.25)
 
 [node name="slot4" parent="Items" instance=ExtResource("4_sb5mx")]
-position = Vector2(85.3333, 522.667)
+position = Vector2(84, 530)
 scale = Vector2(0.25, 0.25)
 
 [node name="slot5" parent="Items" instance=ExtResource("4_sb5mx")]
-position = Vector2(85.3333, 672)
+position = Vector2(84, 680)
 scale = Vector2(0.25, 0.25)
 
 [connection signal="item_picked_up" from="Items/slot1" to="." method="_on_item_picked_up"]
