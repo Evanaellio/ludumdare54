@@ -23,6 +23,14 @@ func _on_item_picked_up(slot_node: Node2D):
 	active_slot.rarity = rarity
 	item_picked_up.emit(selected_item)
 
+func update_warning():
+	if %slot5.item:
+		%AnimationPlayerSlotWarning.play("warning")
+		alert_player.play("queue_alert")
+	else:
+		%AnimationPlayerSlotWarning.play("RESET")
+		alert_player.stop()
+
 func item_taken_from_queue():
 	deactivateSlot(false)
 	var slots = $Items.get_children()
@@ -31,13 +39,12 @@ func item_taken_from_queue():
 			slots[i].item = slots[i+1].item
 			slots[i].rarity = slots[i+1].rarity
 			slots[i+1].item = null
-	if has_space():
-		print("stop alert")
-		alert_player.stop()
+	update_warning()
 
 func unselectItem(item: Node2D):
 	get_node("/root/SelectionManager").destroyItem()
 	deactivateSlot(true)
+	update_warning()
 
 func deactivateSlot(revert: bool):
 	if active_slot != null:
@@ -46,21 +53,21 @@ func deactivateSlot(revert: bool):
 		else: 
 			active_slot.item_dropped()
 		active_slot = null
+	update_warning()
 
 func add_to_queue(item_name: String, rarity: int):
-	var slot = _first_free()
+	var slot = _first_free()	
 	if slot != null:
 		var pack = ItemsPacks.get(item_name, null)
 		slot.item = pack
 		slot.rarity = rarity
-		if not has_space():
-			print("alert")
-			alert_player.play("queue_alert")
+		update_warning()
 	else:
 		$"/root/Gameplay".lose_game()
 
 func add_random_to_queue():
 	add_to_queue(rand_item(), _rand_rarity(rarity_mult * temp_rarity_mult))
+	update_warning()
 
 func rand_item():
 	var weights: Array[Dictionary] = [
@@ -92,28 +99,28 @@ func _rand_rarity(mult: int):
 	return min(rarity_progression, weighted_rand_rarity)
 
 func _first_free() -> Node2D:
-	if $Items/slot1.item == null:
-		return $Items/slot1
-	if $Items/slot2.item == null:
-		return $Items/slot2
-	if $Items/slot3.item == null:
-		return $Items/slot3
-	if $Items/slot4.item == null:
-		return $Items/slot4
-	if $Items/slot5.item == null:
-		return $Items/slot5
+	if %slot1.item == null:
+		return %slot1
+	if %slot2.item == null:
+		return %slot2
+	if %slot3.item == null:
+		return %slot3
+	if %slot4.item == null:
+		return %slot4
+	if %slot5.item == null:
+		return %slot5
 	return null
 
 # I miss arrays
 func items_amount() -> int:
-	if $Items/slot1.item == null:
+	if %slot1.item == null:
 		return 0
-	if $Items/slot2.item == null:
+	if %slot2.item == null:
 		return 1
-	if $Items/slot3.item == null:
+	if %slot3.item == null:
 		return 2
-	if $Items/slot4.item == null:
+	if %slot4.item == null:
 		return 3
-	if $Items/slot5.item == null:
+	if %slot5.item == null:
 		return 4
 	return 5
