@@ -46,7 +46,7 @@ func item_taken_from_queue():
 			slots[i+1].item = null
 	update_warning()
 
-func unselectItem(item: Node2D):
+func unselectItem(_item: Node2D):
 	get_node("/root/SelectionManager").destroyItem()
 	deactivateSlot(true)
 	update_warning()
