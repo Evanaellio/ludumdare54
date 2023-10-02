@@ -263,6 +263,25 @@ stream = ExtResource("14_adsan")
 volume_db = -5.012
 autoplay = true
 
+[node name="MadeByLabel2" type="Label" parent="."]
+layout_mode = 2
+offset_left = 686.0
+offset_top = 673.0
+offset_right = 1396.0
+offset_bottom = 733.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 31
+text = "Ludum Dare 54"
+
+[node name="Loucasse2" type="Label" parent="."]
+layout_mode = 2
+offset_left = 703.0
+offset_top = 722.0
+offset_right = 885.0
+offset_bottom = 764.0
+theme_override_colors/font_color = Color(0.886275, 0.87451, 0.87451, 1)
+text = "Limited Space"
+
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
