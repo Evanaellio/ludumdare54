@@ -2,20 +2,10 @@ extends Node2D
 
 signal item_picked_up
 
-@onready var ItemsPacks = get_node("/root/SelectionManager").ItemsPacks
+@onready var ItemsPacks = SelectionManager.ItemsPacks
 
 # Max item rarity given in a quest
 var rarity_progression = 0
-
-# starting at : 1 out of X 
-# then : rarity_mult out of X
-const RARITY_CHANCES = [ 
-	1,   # common
-	10,
-	25,
-	50,
-	100  # rare
-]
 var rarity_mult = 1 # increase with time
 var temp_rarity_mult = 1 # increase with boost
 
@@ -79,15 +69,19 @@ func rand_item():
 	]
 	return RngUtils.array_with_weighted(weights)[0].value
 
+
 func has_space() -> bool:
 	return _first_free() != null
 
-func _rand_rarity(mutl: int):
-	var maxRarity = RARITY_CHANCES.size() - 1
-	for i in maxRarity:
-		if randi_range(1, RARITY_CHANCES[maxRarity-i]) <= mutl:
-			return maxRarity-i
-	return 0
+func _rand_rarity(mult: int):
+	var weights: Array[Dictionary] = [
+		{"value": 0, "weight": 100.0},
+		{"value": 1, "weight": 20.0 * mult},
+		{"value": 2, "weight": 5.0 * mult},
+		{"value": 3, "weight": 1.0 * mult},
+	]
+	var weighted_rand_rarity = RngUtils.array_with_weighted(weights)[0].value
+	return min(rarity_progression, weighted_rand_rarity)
 
 func _first_free() -> Node2D:
 	if $Items/slot1.item == null:

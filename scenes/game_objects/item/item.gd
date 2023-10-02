@@ -5,6 +5,7 @@ extends Node2D
 
 @onready var gameplay = $"/root/Gameplay"
 @onready var backpack : Node2D = $"/root/Gameplay/Backpack"
+@onready var queue = get_node("/root/Gameplay/Queue")
 @onready var occupied_tilemap : TileMap = $"/root/Gameplay/Backpack/OccupiedTileMap"
 @onready var preview_tilemap : TileMap = $"/root/Gameplay/Backpack/PreviewTileMap"
 @onready var selection_manager = $"/root/SelectionManager"
@@ -172,6 +173,8 @@ func set_rarity(new_rarity: int):
 	if rarity >= 0 and rarity < RARITY_COLORS.size():
 		var new_color = RARITY_COLORS[rarity]
 		set_color(new_color)
+	
+	queue.rarity_progression = max(queue.rarity_progression, new_rarity)
 	
 	if new_rarity == 5: # After a full line of orange, the player wins !
 		gameplay.win_game()
