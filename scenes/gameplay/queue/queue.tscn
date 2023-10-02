@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://i0y8p7u3goat"]
+[gd_scene load_steps=10 format=3 uid="uid://i0y8p7u3goat"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/queue/queue.gd" id="1_5p6ie"]
+[ext_resource type="AudioStream" uid="uid://5t52jbjw5eny" path="res://assets/sfx/rip.ogg" id="3_u37dm"]
 [ext_resource type="PackedScene" uid="uid://c6d4ofdrwafyb" path="res://scenes/gameplay/queue/item_slot.tscn" id="4_sb5mx"]
 
 [sub_resource type="Animation" id="Animation_0uv2u"]
@@ -123,6 +124,9 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_w1ff1")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_u37dm")
 
 [connection signal="item_picked_up" from="Items/slot1" to="." method="_on_item_picked_up"]
 [connection signal="item_picked_up" from="Items/slot2" to="." method="_on_item_picked_up"]

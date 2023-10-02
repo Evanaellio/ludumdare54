@@ -27,8 +27,13 @@ func update_warning():
 	if %slot5.item:
 		%AnimationPlayerSlotWarning.play("warning")
 		#alert_player.play("queue_alert")
+		get_node("/root/Gameplay/AudioStreamPlayer").stop()
+		$AudioStreamPlayer.play()
 	else:
 		%AnimationPlayerSlotWarning.play("RESET")
+		if not get_node("/root/Gameplay/AudioStreamPlayer").playing:
+			get_node("/root/Gameplay/AudioStreamPlayer").play()
+		$AudioStreamPlayer.stop()
 		#alert_player.stop()
 
 func item_taken_from_queue():
@@ -64,6 +69,7 @@ func add_to_queue(item_name: String, rarity: int):
 		update_warning()
 	else:
 		$"/root/Gameplay".lose_game()
+		$AudioStreamPlayer.queue_free()
 
 func add_random_to_queue():
 	add_to_queue(rand_item(), _rand_rarity(rarity_mult * temp_rarity_mult))
