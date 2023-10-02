@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://bhaya5sk8xnk"]
+[gd_scene load_steps=26 format=3 uid="uid://bhaya5sk8xnk"]
 
 [ext_resource type="FontFile" uid="uid://cawekr44fruhm" path="res://assets/fonts/open-sans/open-sans-regular.ttf" id="1_4w4tg"]
 [ext_resource type="Script" path="res://scenes/gameplay/fightzone/fightzone.gd" id="1_edjpk"]
 [ext_resource type="PackedScene" uid="uid://krooeswl2kml" path="res://scenes/gameplay/fightzone/terrain/TestBiome.tscn" id="3_lq371"]
 [ext_resource type="Shader" path="res://scenes/gameplay/fightzone/greyscale.gdshader" id="4_h5f0o"]
 [ext_resource type="Texture2D" uid="uid://dsymga4kmhxlk" path="res://assets/sprites/items/slime1.png" id="5_0vc1j"]
+[ext_resource type="AudioStream" uid="uid://dba5j2o6co7ap" path="res://assets/sfx/pickup.wav" id="5_37d5x"]
 [ext_resource type="Texture2D" uid="uid://dxmenxamf8bgp" path="res://assets/sprites/items/slime2.png" id="6_d16t2"]
 [ext_resource type="Texture2D" uid="uid://234eo4i0sui3" path="res://assets/sprites/items/jeanmichel.png" id="7_ro5kl"]
 [ext_resource type="AudioStream" uid="uid://dtiobaorirwh1" path="res://assets/sfx/hitHurt.wav" id="8_k3gv0"]
@@ -87,7 +88,7 @@ tracks/0/keys = {
 tracks/1/type = "audio"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/path = NodePath("../LootProgressBar/AudioStreamPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -256,6 +257,10 @@ offset_bottom = 59.0
 text = "Rarity : 1X"
 label_settings = SubResource("LabelSettings_ki0e0")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GUI/LootProgressBar"]
+stream = ExtResource("5_37d5x")
+volume_db = -17.012
+
 [node name="Fight" type="Control" parent="GUI"]
 anchors_preset = 0
 offset_right = 40.0
@@ -314,9 +319,6 @@ position = Vector2(380, 83)
 rotation = -0.0118559
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("7_ro5kl")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GUI/Sprite2D"]
-volume_db = -10.747
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GUI"]
 unique_name_in_owner = true

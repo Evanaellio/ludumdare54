@@ -164,6 +164,7 @@ func _on_deposit_area_input_event(_viewport, event, _shape_idx):
 						# if item taken directly from queue, release queue slot
 						Queue.item_taken_from_queue()
 					boost(selected.rarity + 2)
+					$GUI/LootProgressBar/AudioStreamPlayer.play()
 					
 					cancel_quest()
 
