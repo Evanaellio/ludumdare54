@@ -1,10 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2gocuhw2o7py"]
+[gd_scene load_steps=16 format=3 uid="uid://c2gocuhw2o7py"]
 
 [ext_resource type="Theme" uid="uid://ducfept6pmkkm" path="res://assets/ui-theme.tres" id="1"]
 [ext_resource type="FontFile" uid="uid://da2t6lyf41wty" path="res://assets/fonts/open-sans/open-sans-bold.ttf" id="4"]
 [ext_resource type="Script" path="res://scenes/menu/game_version.gd" id="4_3hod2"]
 [ext_resource type="Script" path="res://scenes/menu/menu.gd" id="5"]
 [ext_resource type="Script" path="res://scenes/menu/godot_version.gd" id="5_fdyjp"]
+[ext_resource type="PackedScene" uid="uid://krooeswl2kml" path="res://scenes/gameplay/fightzone/terrain/TestBiome.tscn" id="6_1ra7g"]
+[ext_resource type="Shader" path="res://scenes/gameplay/fightzone/greyscale.gdshader" id="7_7av75"]
+[ext_resource type="Texture2D" uid="uid://234eo4i0sui3" path="res://assets/sprites/items/jeanmichel.png" id="8_3lnti"]
+[ext_resource type="Texture2D" uid="uid://bl2dqjx6sn830" path="res://assets/sprites/items/hachette.png" id="9_k6ss5"]
+[ext_resource type="Texture2D" uid="uid://df8iiqpvxxlw8" path="res://assets/sprites/items/apple.png" id="10_05ej1"]
+[ext_resource type="Texture2D" uid="uid://bjqj2w5pdpuxu" path="res://assets/sprites/items/sword.png" id="11_d4btp"]
+[ext_resource type="Texture2D" uid="uid://cflrh5sy2el88" path="res://assets/sprites/items/potion.png" id="12_jjtkm"]
+[ext_resource type="Texture2D" uid="uid://d0shf8usbbrem" path="res://assets/sprites/items/fleau-jj.png" id="13_0r1ub"]
+[ext_resource type="Texture2D" uid="uid://b3lbc4ekrsf5y" path="res://assets/sprites/items/key.png" id="14_g8etv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a4h3q"]
+shader = ExtResource("7_7av75")
+shader_parameter/grayscale = true
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -16,23 +29,22 @@ grow_vertical = 2
 theme = ExtResource("1")
 script = ExtResource("5")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color(0.176471, 0.682353, 0.647059, 1)
-
 [node name="CenterContainer" type="CenterContainer" parent="."]
-layout_mode = 0
+z_index = 3
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -339.0
+offset_top = -180.0
+offset_bottom = -418.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Title" type="Label" parent="CenterContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4")
 theme_override_font_sizes/font_size = 60
-text = "Godot Game Template"
+text = "Sworn to Carry"
 uppercase = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -71,50 +83,183 @@ offset_right = 198.0
 offset_bottom = -18.0
 
 [node name="GameVersion" type="Label" parent="Version"]
+visible = false
 layout_mode = 2
 text = "<x.y.z>"
 script = ExtResource("4_3hod2")
 
 [node name="GodotVersion" type="Label" parent="Version"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.92549, 0.92549, 0.92549, 1)
 text = "<GodotVersion>"
 script = ExtResource("5_fdyjp")
 
 [node name="Credits" type="VBoxContainer" parent="."]
-layout_mode = 0
-anchor_left = 1.0
+z_index = 5
+layout_mode = 1
+anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -147.0
-offset_top = -90.0
-offset_right = -16.0
-offset_bottom = -16.0
-grow_horizontal = 0
+offset_left = 5.0
+offset_top = -101.0
+offset_right = -5.0
+grow_horizontal = 2
 grow_vertical = 0
+alignment = 2
 
 [node name="MadeByLabel" type="Label" parent="Credits"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "made by:"
 
-[node name="Developer1" type="Label" parent="Credits"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Credits"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Loucasse" type="Label" parent="Credits/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.886275, 0.87451, 0.87451, 1)
+text = "Loucasse"
+
+[node name="Teanan" type="Label" parent="Credits/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.886275, 0.87451, 0.87451, 1)
+text = "Teanan"
+
+[node name="Evanaellio" type="Label" parent="Credits/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.92549, 0.92549, 0.92549, 1)
-text = "Crystal Bit community"
+text = "Evanaellio"
 
-[node name="Developer2" type="Label" parent="Credits"]
-visible = false
+[node name="Wolfy" type="Label" parent="Credits/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.886275, 0.87451, 0.87451, 1)
-text = "Developer 2"
+text = "Wolfy"
 
-[node name="Developer3" type="Label" parent="Credits"]
-visible = false
+[node name="Salier" type="Label" parent="Credits/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.886275, 0.87451, 0.87451, 1)
-text = "Developer 3"
+text = "Salier"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Back" type="Node2D" parent="Control"]
+scale = Vector2(4, 4)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control/Back"]
+z_index = -1
+offset_left = -224.25
+offset_top = -71.0
+offset_right = 687.75
+offset_bottom = 441.0
+
+[node name="SubViewport" type="SubViewport" parent="Control/Back/SubViewportContainer"]
+disable_3d = true
+handle_input_locally = false
+gui_disable_input = true
+size = Vector2i(912, 512)
+render_target_update_mode = 4
+
+[node name="TestBiome" parent="Control/Back/SubViewportContainer/SubViewport" instance=ExtResource("6_1ra7g")]
+
+[node name="ItemAttach" type="Node2D" parent="Control/Back/SubViewportContainer/SubViewport"]
+material = SubResource("ShaderMaterial_a4h3q")
+position = Vector2(93, 82)
+scale = Vector2(0.25, 0.25)
+
+[node name="Jean-Michel" type="Sprite2D" parent="Control/Back"]
+position = Vector2(-61, 40)
+rotation = -0.0118559
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("8_3lnti")
+
+[node name="Pile" type="Node2D" parent="Control/Back"]
+visible = false
+
+[node name="Hachette" type="Sprite2D" parent="Control/Back/Pile"]
+position = Vector2(80.2509, 95.073)
+rotation = -0.44855
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_k6ss5")
+
+[node name="Apple" type="Sprite2D" parent="Control/Back/Pile"]
+z_index = 1
+position = Vector2(55.2509, 101.073)
+rotation = -1.34565
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("10_05ej1")
+
+[node name="Sword" type="Sprite2D" parent="Control/Back/Pile"]
+z_index = 1
+position = Vector2(119.751, 93.073)
+rotation = 0.336849
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("11_d4btp")
+
+[node name="Potion" type="Sprite2D" parent="Control/Back/Pile"]
+z_index = 1
+position = Vector2(90.2509, 102.073)
+rotation = 0.111701
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("12_jjtkm")
+
+[node name="Fleau-jj" type="Sprite2D" parent="Control/Back/Pile"]
+position = Vector2(126.001, 82.823)
+rotation = -1.79594
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("13_0r1ub")
+
+[node name="Key" type="Sprite2D" parent="Control/Back/Pile"]
+position = Vector2(97.7509, 95.8229)
+rotation = -3.92699
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("14_g8etv")
+
+[node name="Control2" type="Control" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+scale = Vector2(10, 10)
+
+[node name="ColorRect" type="ColorRect" parent="Control2"]
+z_index = -2
+offset_left = -189.8
+offset_top = -91.7
+offset_right = 317.2
+offset_bottom = 20.3
+color = Color(0.301961, 0.67451, 1, 1)
+
+[node name="Control3" type="Control" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+scale = Vector2(10, 10)
+
+[node name="ColorRect2" type="ColorRect" parent="Control3"]
+z_index = -1
+offset_left = -201.9
+offset_top = 44.2
+offset_right = 358.1
+offset_bottom = 163.2
+color = Color(0.564706, 0.494118, 0.301961, 1)
 
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
