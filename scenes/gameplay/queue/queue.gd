@@ -76,9 +76,9 @@ func has_space() -> bool:
 func _rand_rarity(mult: int):
 	var weights: Array[Dictionary] = [
 		{"value": 0, "weight": 100.0},
-		{"value": 1, "weight": 20.0 * mult},
-		{"value": 2, "weight": 5.0 * mult},
-		{"value": 3, "weight": 1.0 * mult},
+		{"value": 1, "weight": 40.0 * mult},
+		{"value": 2, "weight": 15.0 * mult},
+		{"value": 3, "weight": 5.0 * mult},
 	]
 	var weighted_rand_rarity = RngUtils.array_with_weighted(weights)[0].value
 	return min(rarity_progression, weighted_rand_rarity)
