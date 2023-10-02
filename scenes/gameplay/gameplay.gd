@@ -24,7 +24,6 @@ func start():
 
 	$Queue.add_random_to_queue()
 	$Queue.add_random_to_queue()
-	$Queue.add_random_to_queue()
 
 func win_game():
 	# TODO : lock UI, do some logic, go back to menu etc...
