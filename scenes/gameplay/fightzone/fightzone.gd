@@ -158,7 +158,7 @@ func _on_deposit_area_input_event(_viewport, event, _shape_idx):
 				var nodeName = selected.item_type
 				if requestItemType == nodeName:
 					var score = selected.get_score()
-					score_gui.incr_score(score)
+					score_gui.incr_score(score*3)
 					SelectionManager.destroyItem()
 					if SelectionManager.selectedItemSource != null:
 						# if item taken directly from queue, release queue slot

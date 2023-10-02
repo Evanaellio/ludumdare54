@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var queue = $"/root/Gameplay/Queue"
+@onready var score_gui: Control = $"/root/Gameplay/ScoreGUI"
 
 @onready var occupied_tilemap : TileMap = %OccupiedTileMap
 
@@ -93,6 +94,7 @@ func removed_not_selected_upgrade(selected: Node2D) -> void:
 	for i in upgradable_items:
 		if i != selected:
 			i.animate_upgrade_component(selected.global_position)
+			score_gui.decr_score(i.get_score())
 	upgradable_items = []
 	waiting_upgrade_selected = false
 
@@ -109,7 +111,13 @@ func canItemBePlaced(item: Node2D) -> bool:
 	return not item.check_occupied(upgradable_items)
 
 func placeItem(item: Node2D) -> Node2D:
-	var swappedItem =  item.place_in_backpack()
+	var swappedItem: Node2D = item.place_in_backpack()
+	
+	# handle score
+	score_gui.incr_score(item.get_score())
+	if swappedItem != null:
+		score_gui.decr_score(swappedItem.get_score())
+
 	snap_item_to_grid(item)
 	queue.item_taken_from_queue()
 	var stained_lines: Array[int] = add_item_to_lookup(item)

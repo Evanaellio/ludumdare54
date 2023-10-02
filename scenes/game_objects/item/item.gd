@@ -3,6 +3,7 @@ extends Node2D
 
 @export var item_type: String
 
+@onready var score_gui: Control = $"/root/Gameplay/ScoreGUI"
 @onready var gameplay = $"/root/Gameplay"
 @onready var backpack : Node2D = $"/root/Gameplay/Backpack"
 @onready var queue = get_node("/root/Gameplay/Queue")
@@ -34,12 +35,15 @@ func on_click():
 	if selection_manager.selectedItem == null:
 		noise()
 		if is_electable_for_upgrade:
-			incr_rarity()
 			backpack.removed_not_selected_upgrade(self)
+			score_gui.decr_score(self.get_score())
+			incr_rarity()
+			score_gui.incr_score(self.get_score())
 			is_electable_for_upgrade = false
 			selection_manager.locked = false
 			tween_upgrade.kill()
 		else:
+			score_gui.decr_score(self.get_score())
 			selection_manager.selectItem(self, null, true)
 
 func tile_ready(tile):
@@ -166,7 +170,7 @@ var rarity: int = -1
 
 ## compute score based on base_score and rarity
 func get_score() -> int:
-	return base_score * pow(4, rarity)
+	return base_score * pow(5, rarity)
 
 func set_rarity(new_rarity: int):
 	rarity = new_rarity
