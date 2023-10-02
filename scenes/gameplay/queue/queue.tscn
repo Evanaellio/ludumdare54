@@ -3,6 +3,43 @@
 [ext_resource type="Script" path="res://scenes/gameplay/queue/queue.gd" id="1_5p6ie"]
 [ext_resource type="PackedScene" uid="uid://c6d4ofdrwafyb" path="res://scenes/gameplay/queue/item_slot.tscn" id="4_sb5mx"]
 
+[sub_resource type="Animation" id="Animation_svjqy"]
+resource_name = "queue_alert"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.368627, 0.290196, 0.25098, 1), Color(0.482353, 0.654902, 0.160784, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0uv2u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.368627, 0.290196, 0.25098, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_erar7"]
+_data = {
+"RESET": SubResource("Animation_0uv2u"),
+"queue_alert": SubResource("Animation_svjqy")
+}
+
 [node name="Queue" type="Node2D"]
 script = ExtResource("1_5p6ie")
 
@@ -10,6 +47,11 @@ script = ExtResource("1_5p6ie")
 position = Vector2(223, 152)
 color = Color(0.368627, 0.290196, 0.25098, 1)
 polygon = PackedVector2Array(-223, -152, -95, -152, -95, 424, -223, 424)
+
+[node name="AlertPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_erar7")
+}
 
 [node name="Items" type="Node2D" parent="."]
 scale = Vector2(0.75, 0.75)

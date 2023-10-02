@@ -4,6 +4,8 @@ signal item_picked_up
 
 @onready var ItemsPacks = SelectionManager.ItemsPacks
 
+@onready var alert_player: AnimationPlayer = $"./AlertPlayer"
+
 # Max item rarity given in a quest
 var rarity_progression = 0
 var rarity_mult = 1 # increase with time
@@ -29,6 +31,9 @@ func item_taken_from_queue():
 			slots[i].item = slots[i+1].item
 			slots[i].rarity = slots[i+1].rarity
 			slots[i+1].item = null
+	if has_space():
+		print("stop alert")
+		alert_player.stop()
 
 func unselectItem(item: Node2D):
 	get_node("/root/SelectionManager").destroyItem()
@@ -48,6 +53,9 @@ func add_to_queue(item_name: String, rarity: int):
 		var pack = ItemsPacks.get(item_name, null)
 		slot.item = pack
 		slot.rarity = rarity
+		if not has_space():
+			print("alert")
+			alert_player.play("queue_alert")
 	else:
 		$"/root/Gameplay".lose_game()
 
