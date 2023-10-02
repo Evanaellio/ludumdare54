@@ -26,10 +26,10 @@ func _on_item_picked_up(slot_node: Node2D):
 func update_warning():
 	if %slot5.item:
 		%AnimationPlayerSlotWarning.play("warning")
-		alert_player.play("queue_alert")
+		#alert_player.play("queue_alert")
 	else:
 		%AnimationPlayerSlotWarning.play("RESET")
-		alert_player.stop()
+		#alert_player.stop()
 
 func item_taken_from_queue():
 	deactivateSlot(false)
