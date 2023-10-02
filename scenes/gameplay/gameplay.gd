@@ -13,9 +13,8 @@ func pre_start(params):
 			var val = params[key]
 			printt("", key, val)
 	$PauseLayer.visible = true
-
+	
 	$Fightzone.connect("found_loot", Callable($Queue, "add_random_to_queue").bind())
-
 
 # `start()` is called after pre_start and after the graphic transition ends.
 func start():
@@ -28,14 +27,15 @@ func start():
 func win_game():
 	# TODO : lock UI, do some logic, go back to menu etc...
 	%WinScreen.visible = true
+	$Fightzone.stop()
 
 func lose_game():
 	# TODO : lock UI, do some logic, go back to menu etc...
 	%LoseScreen.visible = true
-
+	$Fightzone.stop()
+	
 func _process(delta):
 	pass
-
 
 func _on_queue_item_picked_up(item_node: Node2D):
 	var selectionManager = get_node("/root/SelectionManager")

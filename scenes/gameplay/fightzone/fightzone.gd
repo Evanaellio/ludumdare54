@@ -28,6 +28,7 @@ enum States {WALK, FIGHT}
 
 var state = States.WALK
 var boosted = false
+var stopped = false
 
 var requestItemType: String
 
@@ -59,9 +60,10 @@ func _process(delta):
 
 # Start timer to next loot, timer can be paused during fights
 func next_loot():
-	var items_in_queue = Queue.items_amount()
-	var wait_length = 3 + items_in_queue + randi_range(-2, 0)
-	loot_timer.start(wait_length)
+	if not stopped:
+		var items_in_queue = Queue.items_amount()
+		var wait_length = 3 + items_in_queue + randi_range(-2, 0)
+		loot_timer.start(wait_length)
 
 func _on_loot_timer_timeout():
 	found_loot.emit()
@@ -69,8 +71,9 @@ func _on_loot_timer_timeout():
 
 # Start timer to next fight
 func next_fight():
-	var wait_length = 14.5 + randi_range(-5, 5)
-	next_fight_timer.start(wait_length)
+	if not stopped:
+		var wait_length = 14.5 + randi_range(-5, 5)
+		next_fight_timer.start(wait_length)
 
 func _on_next_fight_timer_timeout():
 	state = States.FIGHT
@@ -105,8 +108,9 @@ func _on_boost_timer_timeout():
 
 # Start timer to next quest
 func next_quest():
-	var wait_length = 5 + randi_range(-1, 2)
-	next_quest_timer.start(wait_length)
+	if not stopped:
+		var wait_length = 5 + randi_range(-1, 2)
+		next_quest_timer.start(wait_length)
 
 func _on_next_quest_timer_timeout():
 	start_quest()
@@ -165,3 +169,12 @@ func _on_deposit_area_input_event(_viewport, event, _shape_idx):
 
 func _on_deposit_area_mouse_exited():
 	clicking = false
+
+func stop():
+	stopped = true
+	loot_timer.stop()
+	boost_timer.stop()
+	fight_timer.stop()
+	quest_timer.stop()
+	next_fight_timer.stop()
+	next_quest_timer.stop()
