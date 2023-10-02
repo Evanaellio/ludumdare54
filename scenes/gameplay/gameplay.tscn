@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://4fyoq8npekf0"]
+[gd_scene load_steps=10 format=3 uid="uid://4fyoq8npekf0"]
 
 [ext_resource type="PackedScene" uid="uid://barl4q1kugrmm" path="res://scenes/gameplay/pause-layer/pause-layer.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://mt3uidtqqkjb" path="res://scenes/gameplay/score_gui/score_gui.tscn" id="2_l6dpm"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bhaya5sk8xnk" path="res://scenes/gameplay/fightzone/fightzone.tscn" id="6_vhdhj"]
 [ext_resource type="PackedScene" uid="uid://djl3w76d3rg0l" path="res://scenes/gameplay/win_screen.tscn" id="7_6nuj1"]
 [ext_resource type="PackedScene" uid="uid://b5hwxwiw0eqqm" path="res://scenes/gameplay/lose_screen.tscn" id="8_4b5t1"]
+[ext_resource type="AudioStream" uid="uid://bdp2hp87ga4rf" path="res://assets/sfx/game.ogg" id="9_fm3yy"]
 
 [node name="Gameplay" type="Node"]
 script = ExtResource("5")
@@ -43,4 +44,10 @@ offset_top = 30.0
 offset_right = 28.0
 offset_bottom = 30.0
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_fm3yy")
+volume_db = -5.012
+autoplay = true
+
 [connection signal="item_picked_up" from="Queue" to="." method="_on_queue_item_picked_up"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

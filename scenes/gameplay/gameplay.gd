@@ -14,6 +14,8 @@ func pre_start(params):
 			printt("", key, val)
 	$PauseLayer.visible = true
 	
+	$AudioStreamPlayer.play()
+
 	$Fightzone.connect("found_loot", Callable($Queue, "add_random_to_queue").bind())
 
 # `start()` is called after pre_start and after the graphic transition ends.
@@ -42,3 +44,7 @@ func _on_queue_item_picked_up(item_node: Node2D):
 	if selectionManager.selectItem(item_node.get_node("Item"), $Queue):
 		$Backpack.add_child(item_node)
 		
+
+
+func _on_audio_stream_player_finished():
+	$AudioStreamPlayer.play()
