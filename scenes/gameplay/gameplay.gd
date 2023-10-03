@@ -42,3 +42,10 @@ func _on_queue_item_picked_up(item_node: Node2D):
 
 func _on_audio_stream_player_finished():
 	$AudioStreamPlayer.play()
+	
+func restart():
+	var params = {
+		"show_progress_bar": true,
+	}
+	Game.change_scene_to_file("res://scenes/gameplay/gameplay.tscn", params)
+

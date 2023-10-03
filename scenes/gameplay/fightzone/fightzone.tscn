@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://krooeswl2kml" path="res://scenes/gameplay/fightzone/terrain/TestBiome.tscn" id="3_lq371"]
 [ext_resource type="Shader" path="res://scenes/gameplay/fightzone/greyscale.gdshader" id="4_h5f0o"]
 [ext_resource type="Texture2D" uid="uid://dsymga4kmhxlk" path="res://assets/sprites/items/slime1.png" id="5_0vc1j"]
-[ext_resource type="AudioStream" uid="uid://dba5j2o6co7ap" path="res://assets/sfx/pickup.wav" id="5_37d5x"]
+[ext_resource type="AudioStream" uid="uid://cevnfkju8v6sq" path="res://assets/sfx/pickup.wav" id="5_37d5x"]
 [ext_resource type="Texture2D" uid="uid://dxmenxamf8bgp" path="res://assets/sprites/items/slime2.png" id="6_d16t2"]
 [ext_resource type="Texture2D" uid="uid://234eo4i0sui3" path="res://assets/sprites/items/jeanmichel.png" id="7_ro5kl"]
 [ext_resource type="AudioStream" uid="uid://dtiobaorirwh1" path="res://assets/sfx/hitHurt.wav" id="8_k3gv0"]

@@ -31,18 +31,47 @@ mouse_filter = 2
 [node name="WinScreen" parent="." instance=ExtResource("7_6nuj1")]
 unique_name_in_owner = true
 visible = false
-offset_left = 37.0
-offset_top = 34.0
-offset_right = 37.0
-offset_bottom = 34.0
+offset_left = 40.0
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = -20.0
+
+[node name="Button" parent="WinScreen" index="2"]
+offset_left = 305.0
+offset_right = 432.0
 
 [node name="LoseScreen" parent="." instance=ExtResource("8_4b5t1")]
 unique_name_in_owner = true
 visible = false
-offset_left = 28.0
-offset_top = 30.0
-offset_right = 28.0
-offset_bottom = 30.0
+offset_left = 56.0
+offset_top = 87.0
+offset_right = 56.0
+offset_bottom = 87.0
+
+[node name="ColorRect" parent="LoseScreen" index="0"]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -590.0
+offset_top = -393.0
+offset_right = 1514.0
+offset_bottom = 1228.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="RichTextLabel" parent="LoseScreen" index="1"]
+offset_left = 11.0
+offset_top = 135.0
+offset_right = 812.0
+offset_bottom = 403.0
+
+[node name="Button" parent="LoseScreen" index="2"]
+layout_mode = 0
+offset_left = 289.0
+offset_top = 321.0
+offset_right = 415.0
+offset_bottom = 389.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_fm3yy")
@@ -50,4 +79,9 @@ volume_db = -5.012
 autoplay = true
 
 [connection signal="item_picked_up" from="Queue" to="." method="_on_queue_item_picked_up"]
+[connection signal="pressed" from="WinScreen/Button" to="." method="restart"]
+[connection signal="pressed" from="LoseScreen/Button" to="." method="restart"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
+
+[editable path="WinScreen"]
+[editable path="LoseScreen"]

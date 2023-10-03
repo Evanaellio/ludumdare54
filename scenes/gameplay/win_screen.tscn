@@ -12,14 +12,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -483.0
+offset_top = -314.0
+offset_right = 1621.0
+offset_bottom = 1307.0
+color = Color(0.270588, 0.678431, 0.27451, 0.290196)
+
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 117.0
-offset_top = 210.0
-offset_right = 691.0
-offset_bottom = 372.0
+offset_left = 184.0
+offset_top = 232.0
+offset_right = 586.0
+offset_bottom = 403.0
 theme_override_fonts/normal_font = SubResource("SystemFont_lg8fr")
 bbcode_enabled = true
 text = "
-   [font_size=80][wave amp=50.0 freq=5.0 connected=1][rainbow freq=1.0 sat=0.8 val=0.8]VICTIORE 🥳[/rainbow] [/wave][/font_size]"
+   [font_size=80][wave amp=50.0 freq=5.0 connected=1][rainbow freq=1.0 sat=0.8 val=0.8]Victory ![/rainbow] [/wave][/font_size]
+"
 tab_size = 24
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 287.0
+offset_top = 428.0
+offset_right = 444.0
+offset_bottom = 496.0
+text = "Play again"

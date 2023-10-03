@@ -12,14 +12,34 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -882.0
+offset_top = -446.0
+offset_right = 506.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.921569, 0.211765, 0.337255, 0.290196)
+
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 117.0
-offset_top = 210.0
-offset_right = 691.0
-offset_bottom = 372.0
+offset_left = 13.0
+offset_top = 166.0
+offset_right = 814.0
+offset_bottom = 434.0
 theme_override_fonts/normal_font = SubResource("SystemFont_lg8fr")
 bbcode_enabled = true
 text = "
-   [font_size=80][wave amp=50.0 freq=5.0 connected=1][rainbow freq=1.0 sat=0.8 val=0.8]DEFIATE 😭[/rainbow] [/wave][/font_size]"
+[color=red][font_size=80][tornado freq=1.0 sat=0.8 val=0.8]Over-encumbered[/tornado][/font_size][/color]"
 tab_size = 24
+
+[node name="Button" type="Button" parent="."]
+offset_left = 272.0
+offset_top = 323.0
+offset_right = 429.0
+offset_bottom = 391.0
+text = "Try again"
