@@ -5,8 +5,9 @@ script/source = "extends Node
 
 
 func _unhandled_input(event):
-	if OS.is_debug_build() and event is InputEventKey and event.is_action_pressed(\"debug_quit_game\"):
-		get_tree().quit()
+	if event is InputEventKey:
+		if event.is_action_pressed(\"debug_quit_game\"):
+			get_tree().quit()
 "
 
 [node name="QuitGame" type="Node"]
