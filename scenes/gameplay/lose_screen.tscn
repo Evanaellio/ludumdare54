@@ -38,6 +38,7 @@ text = "
 tab_size = 24
 
 [node name="Button" type="Button" parent="."]
+layout_mode = 0
 offset_left = 272.0
 offset_top = 323.0
 offset_right = 429.0
